@@ -26,7 +26,6 @@ import com.beta.xmlUtility.Mapper;
 
 public class MainActivity extends AbstractSingleMIDIActivity implements ISelectorDialogListener {
 	
-	private String Test;
 	private IController genericPointer_m;
 	private XYController xyControllerObj_m;
 	private Switch switchX;
