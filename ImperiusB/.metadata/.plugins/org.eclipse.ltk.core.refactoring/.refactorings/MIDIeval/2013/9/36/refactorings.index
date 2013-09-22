@@ -1,0 +1,15 @@
+1378536759985	Copy file
+1378536771640	Delete element
+1378537400577	Delete element
+1378621370829	Encapsulate field 'i_LayoutHeight_m'
+1378621392754	Encapsulate field 'i_LayoutWidth_m'
+1378621412334	Encapsulate field 'i_YMax_m'
+1378621426432	Encapsulate field 'i_YMin_m'
+1378621438799	Encapsulate field 'i_XMax_m'
+1378621453929	Encapsulate field 'i_XMin_m'
+1378621468103	Encapsulate field 'b_IsMultiTouch_m'
+1378621480369	Encapsulate field 'e_Origin_m'
+1378621493346	Encapsulate field 'i_OriginX_m'
+1378621505252	Encapsulate field 'i_OriginY_m'
+1378621517307	Encapsulate field 's_FramePicturePath_m'
+1378621534540	Encapsulate field 's_GridPicturePath_m'

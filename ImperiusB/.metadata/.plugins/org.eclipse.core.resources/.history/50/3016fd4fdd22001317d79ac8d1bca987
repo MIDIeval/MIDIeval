@@ -1,0 +1,13 @@
+package com.beta.thread;
+
+import java.util.concurrent.locks.Lock;
+
+
+public class DeviceWriteThread extends Thread {
+	final Lock deviceWriteLockObj_m = new ReentrantLock();
+	@Override 
+	public void run(){
+		
+	}
+
+}

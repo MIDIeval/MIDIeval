@@ -1,0 +1,29 @@
+package com.beta.thread;
+
+import java.util.Queue;
+import java.util.TimerTask;
+
+import com.beta.Controllability.ControlValuePacket;
+import com.beta.Controllability.IController;
+
+public class QueueWatcherTimerTask extends TimerTask{
+	IController controllerRef_m;
+	Queue<ControlValuePacket> queueObj_m;
+	QueueWatcherTimerTask timerTaskInstance_m;
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+		
+	}
+	
+	//Non-parametric Constructor
+	private QueueWatcherTimerTask(){
+		this.queueObj_m = IController.queueObj_m;
+	}
+	
+	public static QueueWatcherTimerTask fn_FetchTimerTaskInstance(){
+		if ( )
+	}
+
+}

@@ -1,0 +1,9 @@
+1379354041731	Delete element
+1379517198854	Encapsulate field 'controllerMapObj_m'
+1379517861602	Encapsulate field 'subControllerMapObj_m'
+1379781732271	Encapsulate field 'b_ThreadExit_m'
+1379784280731	Encapsulate field 'midiOutputDeviceObj_m'
+1379786284961	Encapsulate field 'b_IsToBeSuspended_m'
+1379787501976	Encapsulate field 'queueNotFullConditionObj_m'
+1379788789813	Encapsulate field 'queueWatcherListenerRef_m'
+1379789751261	Encapsulate field 'deviceWriteLockObj_m'

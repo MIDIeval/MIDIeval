@@ -1,0 +1,41 @@
+package com.beta.activities;
+
+import java.util.ArrayList;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
+import android.os.Bundle;
+
+public class SelectorDialog extends DialogFragment {
+
+	private String[] listOfControllables_m;
+	private String s_TitleHeader_m;
+	
+	public SelectorDialog(Bundle passedBundleObj)
+	{
+		super();
+		this.s_TitleHeader_m = passedBundleObj.getString(super.getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME));
+		this.listOfControllables_m = passedBundleObj.getStringArray(super.getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME));
+		//Once bundle is used for fetch, clear it for other dialogs to use
+		passedBundleObj.clear();
+	}
+	
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstance){
+		//Use the Builder class for convenient dialog construction
+		
+		AlertDialog.Builder selectorBuilder_f = new AlertDialog.Builder(getActivity());
+		selectorBuilder_f.setTitle(this.s_TitleHeader_m);
+		selectorBuilder_f.setItems(this.listOfControllables_m, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		return selectorBuilder_f.create();
+	}
+}

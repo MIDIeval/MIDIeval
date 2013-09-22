@@ -1,0 +1,5 @@
+package com.beta.thread;
+
+public class DeviceWriteThread extends Thread {
+
+}

@@ -1,0 +1,74 @@
+package com.example.midieval;
+import java.util.ArrayList;
+import android.content.Context;
+import android.util.Log;
+
+import com.example.midieval.Controllable;
+import com.example.midieval.Parser;
+
+public class Mapper 
+{
+	
+	private static Controllable object = null;
+	private static Context context;
+	public static Context getContext() {
+		return context;
+	}
+	public static void setContext(Context context) {
+		Mapper.context = context;
+	}
+	public static ArrayList<Controllable> getContinuos()
+	{
+		ArrayList<Controllable> f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
+		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();
+		for(Object controllableObj  : f_controllable_list)
+		{
+			for(Object integerObj : ((Controllable) controllableObj).getF_attributes_list())
+			{
+				if(integerObj.equals((Integer)0))
+				{
+					f_continuos_list.add((Controllable)controllableObj);
+				}
+			}  
+		Log.d("Object value", controllableObj.toString());
+		}
+		return f_controllable_list;
+	}
+	
+	public static ArrayList<Controllable> getDiscrete()
+	{
+		ArrayList<Controllable> f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
+		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();
+		for(Object controllableObj  : f_controllable_list)
+		{
+			for(Object integerObj : ((Controllable) controllableObj).getF_attributes_list())
+			{
+				if(integerObj.equals((Integer)2))
+				{
+					f_continuos_list.add((Controllable)controllableObj);
+				}
+			}  
+		Log.d("Object value", controllableObj.toString());
+		}
+		return f_controllable_list;
+	}
+	
+	public static ArrayList<Controllable> getDigital()
+	{
+		ArrayList<Controllable> f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
+		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();
+		for(Object controllableObj  : f_controllable_list)
+		{
+			for(Object integerObj : ((Controllable) controllableObj).getF_attributes_list())
+			{
+				if(integerObj.equals((Integer)1))
+				{
+					f_continuos_list.add((Controllable)controllableObj);
+				}
+			}  
+		Log.d("Object value", controllableObj.toString());
+		}
+		return f_controllable_list;
+	}
+	
+}

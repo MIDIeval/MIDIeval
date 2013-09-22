@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <declare-styleable name = "XYController">
+        <attr name = "layout_height" format = "integer"/>
+        <attr name = "layout_width" format = "integer" />
+        <attr name = "yMax" format = "integer" />
+        <attr name = "yMin" format = "integer" />
+        <attr name = "xMax" format = "integer"/>
+        <attr name = "xMin" format = "integer" />
+        <attr name = "multiTouch" format = "boolean" />
+        <attr name = "origin" format = "enum" >
+            <enum name = "center" value = "0" />
+            <enum name = "leftBottom" value = "1" />
+            <enum name = "rightBottom" value = "2" />
+            <enum name = "rightTop" value = "3" />
+            <enum name = "leftTop" value = "4" />
+        </attr>
+        <attr name = "originX" format = "integer" />
+        <attr name = "originY" format = "integer" />
+        <attr name = "framePicturePath" format = "string" />
+        <attr name = "gridPicturePath" format = "string" />
+    </declare-styleable>
+</resources>

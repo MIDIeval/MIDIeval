@@ -1,0 +1,6 @@
+package com.beta.thread;
+
+public interface IQueueWatcherListener {
+	void fn_QueueIsNoEmpty();
+	void fn_QueueIsNowFilling();
+}

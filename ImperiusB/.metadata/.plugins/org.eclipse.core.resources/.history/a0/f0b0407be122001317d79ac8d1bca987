@@ -1,0 +1,64 @@
+package com.beta.thread;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import com.beta.Controllability.IController;
+
+
+public class DeviceWriteThread extends Thread {
+	final ReentrantLock deviceWriteLockObj_m = new ReentrantLock();
+	final Condition queueNotFullConditionObj_m = deviceWriteLockObj_m.newCondition();
+	private boolean b_ThreadExit_m = false;
+	private boolean b_IsToBeSuspended_m = false;
+	@Override 
+	public void run(){
+		while ( !this.b_ThreadExit_m ){
+			if ( this.b_IsToBeSuspended_m )
+			{
+				try {
+					if (deviceWriteLockObj_m.isHeldByCurrentThread()){
+						this.deviceWriteLockObj_m.unlock(); //If Thread is suspended, give up the Reentrant lock object					
+						
+					}
+					this.queueNotFullConditionObj_m.await();//AbstractActivity has to .signal() this object
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else{
+				if ( !this.deviceWriteLockObj_m.isHeldByCurrentThread()){
+					deviceWriteLockObj_m.lock();
+					try{
+						//Keep writing to the Device 
+					}
+					finally{
+						if (IController.queueObj_m.isEmpty()){
+							this.deviceWriteLockObj_m.unlock();
+						}
+							
+					}
+					
+				}
+				
+				
+			}
+		}
+		
+	}
+	/**
+	 * @return the b_ThreadExit_m
+	 */
+	public boolean getIsThreadExit() {
+		return b_ThreadExit_m;
+	}
+	/**
+	 * @param b_ThreadExit_m the b_ThreadExit_m to set
+	 */
+	public void setIsThreadExit(boolean b_ThreadExit_m) {
+		this.b_ThreadExit_m = b_ThreadExit_m;
+	}
+
+}
