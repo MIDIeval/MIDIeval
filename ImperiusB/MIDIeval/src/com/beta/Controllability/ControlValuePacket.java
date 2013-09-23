@@ -1,6 +1,7 @@
 package com.beta.Controllability;
 
 public class ControlValuePacket {
+	private IController iControllerPointer_m;
 	private ControllerType e_ControllerType_m;
 	private int i_SubControllerID_m;
 	private float f_ValueVector_m;
@@ -64,6 +65,26 @@ public class ControlValuePacket {
 	 */
 	public void setSubControllerID(int i_SubControllerID_m) {
 		this.i_SubControllerID_m = i_SubControllerID_m;
+	}
+
+
+
+
+	/**
+	 * @return the iControllerPointer_m
+	 */
+	public IController getiControllerPointer() {
+		return iControllerPointer_m;
+	}
+
+
+
+
+	/**
+	 * @param iControllerPointer_m the iControllerPointer_m to set
+	 */
+	public void setiControllerPointer(IController iControllerPointer_m) {
+		this.iControllerPointer_m = iControllerPointer_m;
 	}
 
 }

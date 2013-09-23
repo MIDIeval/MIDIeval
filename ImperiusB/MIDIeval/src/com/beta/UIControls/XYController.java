@@ -78,7 +78,10 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	private String s_GridPicturePath_m;
 	private int[] i_OffsetVector_m = new int[4];
 	private int[] i_MeasureVector_m = new int[2];
-	
+	private int[] xRangeVector_m = new int[]{0, 50};//XMin, XMax, YMin, YMax
+	private int[] yRangeVector_m = new int[]{0, 50};
+	public boolean b_IsYVarOn_m = false;
+	public boolean b_IsXVarOn_m = false;
 	
 	//For events
 	private VelocityTracker velocityTrackerObj_m;
@@ -269,17 +272,28 @@ public class XYController extends UIController implements GestureDetector.OnGest
 					return false;
 				this.d_XYCoordinates_m[0]= this.fn_GetX(event.getX() );
      			this.d_XYCoordinates_m[1] = this.fn_GetY(event.getY());
-     			Log.i("XY_CONTROLLER", "X," + d_XYCoordinates_m[0] + ",Y," + d_XYCoordinates_m[1] );
+     			//Log.i("XY_CONTROLLER", "X," + d_XYCoordinates_m[0] + ",Y," + d_XYCoordinates_m[1] );
 				this.d_XYCoordinates_m[0] = event.getX();
 				this.d_XYCoordinates_m[1] = event.getY();
-				this.controlValuePacketObj_m = new ControlValuePacket(this.fn_Normalize(this.fn_GetX(event.getX() )));
-				this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
-				this.controlValuePacketObj_m.setSubControllerID(XYSubController.X_RANGE_CHANGE.getValue());
-				IController.queueObj_m.offer(controlValuePacketObj_m);
-				this.controlValuePacketObj_m = new ControlValuePacket(this.fn_Normalize(this.fn_GetY(event.getY() )));
-				this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
-				this.controlValuePacketObj_m.setSubControllerID(XYSubController.Y_RANGE_CHANGE.getValue());
-				IController.queueObj_m.offer(controlValuePacketObj_m);
+				if ( this.b_IsXVarOn_m ){
+					float valueX = this.fn_LinearCalculation(this.fn_Normalize(this.fn_GetX(event.getX() )), this.xRangeVector_m);
+					Log.i("XY_CONTROLLER", "X," + valueX );
+					this.controlValuePacketObj_m = new ControlValuePacket(valueX);
+					this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
+					this.controlValuePacketObj_m.setiControllerPointer(this);
+					this.controlValuePacketObj_m.setSubControllerID(XYSubController.X_RANGE_CHANGE.getValue());
+					IController.queueObj_m.offer(controlValuePacketObj_m);
+				}
+				if ( this.b_IsYVarOn_m ){
+					float valueY = this.fn_LinearCalculation(-this.fn_Normalize(this.fn_GetY(event.getY() )), this.yRangeVector_m);
+					Log.i("XY_CONTROLLER", "Y," + valueY );
+					this.controlValuePacketObj_m = new ControlValuePacket(valueY);
+					this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
+					this.controlValuePacketObj_m.setiControllerPointer(this);
+					this.controlValuePacketObj_m.setSubControllerID(XYSubController.Y_RANGE_CHANGE.getValue());
+					IController.queueObj_m.offer(controlValuePacketObj_m);
+				}
+				
 				
 				invalidate();
 				//
@@ -552,7 +566,7 @@ public class XYController extends UIController implements GestureDetector.OnGest
 				b_IsTouchOutside_m = true;
 				
 			}
-			this.d_XYCoordinates_m[0] = x;
+			//this.d_XYCoordinates_m[0] = x;
 			return (x);
 		default:
 			return -10f;
@@ -569,7 +583,7 @@ public class XYController extends UIController implements GestureDetector.OnGest
 				y =  Math.signum(y)*this.i_LayoutGridSideLength_m/2;
 				b_IsTouchOutside_m = true;
 			}
-			this.d_XYCoordinates_m[1] = y;
+			//this.d_XYCoordinates_m[1] = y;
 			return (y);
 		default:
 			return -10f;
@@ -871,8 +885,39 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		return rawData/(this.i_LayoutGridSideLength_m/2);
 		
 	}
+
+	/**
+	 * @return the xyRangeVector_m
+	 */
+	public int[] getXRangeVector() {
+		return xRangeVector_m;
+	}
+
+	/**
+	 * @param xyRangeVector_m the xyRangeVector_m to set
+	 */
+	public void setXRangeVector(int[] xRangeVector_m) {
+		this.xRangeVector_m = xRangeVector_m;
+	}
 	
 
+	/**
+	 * @return the xyRangeVector_m
+	 */
+	public int[] getYRangeVector() {
+		return yRangeVector_m;
+	}
+
+	/**
+	 * @param xyRangeVector_m the xyRangeVector_m to set
+	 */
+	public void setYRangeVector(int[] yRangeVector_m) {
+		this.yRangeVector_m = yRangeVector_m;
+	}
+	
+	public float fn_LinearCalculation(float value, int[] valueRange){
+		return valueRange[0] + ((valueRange[1] - valueRange[0])/(2.0f))*(value + 1 );
+	}
 	
 
 }

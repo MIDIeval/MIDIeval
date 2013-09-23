@@ -16,6 +16,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.beta.ControlMapper.MapperPrototype;
 import com.beta.MIDIUSBFunctinality.MIDIInputDevice;
 import com.beta.MIDIUSBFunctinality.MIDIOutputDevice;
 import com.beta.MIDIUSBFunctinality.UsbCommunication;
@@ -49,12 +50,13 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 	protected UsbDeviceDetails usbMIDIDeviceDetails_m;
 	private QueueWatcherTimerTask queueWatcherTimerTaskObj_m;
 	private DeviceWriteThread deviceWriteThread_m;
-	
+	protected MapperPrototype mapperObj_m;
 	
 	@Override
 	protected void onCreate(final Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		
+		mapperObj_m = new MapperPrototype();
 		//Fetch the USB Service from the application context;
 		usbManagerObj_m = (UsbManager)this.getApplicationContext().getSystemService(Service.USB_SERVICE);
 		List <DeviceFilter> deviceFilterList_f = null;
@@ -118,6 +120,7 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 		}
 		
 		this.deviceWriteThread_m = new DeviceWriteThread();
+		this.deviceWriteThread_m.setMapperPrototype(this.mapperObj_m);
 		this.deviceWriteThread_m.setMidiOutputDevice(midiOutputDeviceObj_m);
 		this.deviceWriteThread_m.setIsToBeSuspended(true);
 		this.deviceWriteThread_m.start();

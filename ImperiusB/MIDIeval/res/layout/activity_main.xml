@@ -12,7 +12,7 @@
     <com.beta.UIControls.XYViewGroup
         android:id="@+id/xy_controller_viewgroup"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="fill_parent"/>
     
 
 </RelativeLayout>

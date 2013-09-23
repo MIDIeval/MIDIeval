@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import android.util.Log;
 
+import com.beta.ControlMapper.MapperPrototype;
 import com.beta.Controllability.ControlValuePacket;
 import com.beta.Controllability.IController;
 import com.beta.MIDIUSBFunctinality.MIDIOutputDevice;
@@ -20,6 +21,7 @@ public class DeviceWriteThread extends Thread {
 	private int functionValue_m = -1;
 	private float f_Value_m = -1.0f;
 	private static final String s_Tag_m = "DEVICE_WRITE_THREAD";
+	private MapperPrototype mapperPrototypeObj_m;
 	@Override 
 	public void run(){
 		while ( !this.b_ThreadExit_m ){
@@ -51,8 +53,12 @@ public class DeviceWriteThread extends Thread {
 						//Get the appropriate value using the Mapper facility
 						//Then get the right FunctionValue from the Mapper facility
 						if ( this.midiOutputDeviceObj_m != null ){
-							//midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_m, (int)f_Value_m);
+							if ( this.mapperPrototypeObj_m != null ){
+								functionValue_m = this.mapperPrototypeObj_m.getFunctionValue(controlValuePacketObj_m.getiControllerPointer(), controlValuePacketObj_m.getSubControllerID());
+								Log.i(this.s_Tag_m, "Sub Controller ID Function value: " + functionValue_m + ", Value: " + f_Value_m);
+								midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_m, (int)f_Value_m);
 							//Keep writing to the Device
+							}
 						}
 						
 					}
@@ -121,6 +127,18 @@ public class DeviceWriteThread extends Thread {
 	 */
 	public ReentrantLock getDeviceWriteLockObj() {
 		return deviceWriteLockObj_m;
+	}
+	/**
+	 * @return the mapperPrototypeObj_m
+	 */
+	public MapperPrototype getMapperPrototype() {
+		return mapperPrototypeObj_m;
+	}
+	/**
+	 * @param mapperPrototypeObj_m the mapperPrototypeObj_m to set
+	 */
+	public void setMapperPrototype(MapperPrototype mapperPrototypeObj_m) {
+		this.mapperPrototypeObj_m = mapperPrototypeObj_m;
 	}
 
 }

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
@@ -15,8 +14,8 @@ import android.widget.Toast;
 
 import com.beta.ControlMapper.MapperPrototype;
 import com.beta.Controllability.IController;
-import com.beta.UIControls.RangeSeekBar;
-import com.beta.UIControls.RangeSeekBar.OnRangeSeekBarChangeListener;
+import com.beta.UIControls.WindowedSeekBar;
+import com.beta.UIControls.WindowedSeekBar.SeekBarChangeListener;
 import com.beta.UIControls.XYController;
 import com.beta.UIControls.XYSubController;
 import com.beta.activities.SelectorDialog.ISelectorDialogListener;
@@ -24,7 +23,7 @@ import com.beta.imperius.AbstractSingleMIDIActivity;
 import com.beta.xmlUtility.Mapper;
 
 
-public class MainActivity extends AbstractSingleMIDIActivity implements ISelectorDialogListener {
+public class MainActivity extends AbstractSingleMIDIActivity implements ISelectorDialogListener{
 	
 	private IController genericPointer_m;
 	private XYController xyControllerObj_m;
@@ -32,24 +31,19 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 	private Switch switchY;
 	private Bundle bundleForDialogObj_m = new Bundle();
 	private XYSubController e_XYSubController_m;
-	private MapperPrototype mapperObj_m;
+	
+	public WindowedSeekBar seekBarX;
+	public WindowedSeekBar seekBarY;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.xyControllerObj_m = (XYController)this.findViewById(R.id.xy_controller);
-		this.switchX = (Switch)this.findViewById(R.id.switch1);
-		this.switchY = (Switch)this.findViewById(R.id.Switch02);
+		this.switchX = (Switch)this.findViewById(R.id.switch_01);
+		this.switchY = (Switch)this.findViewById(R.id.switch_02);
+		this.seekBarX = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_01);
+		this.seekBarY = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_02);
 		
-		//Create RangeSeekBar with max and min value
-		RangeSeekBar<Integer> seekBar = new RangeSeekBar<Integer>(20, 75, this);
-		seekBar.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Integer>() {
-		        @Override
-		        public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
-		                // handle changed range values
-		                Log.i("RangeSeekBar", "User selected new range values: MIN=" + minValue + ", MAX=" + maxValue);
-		        }
-		});
 
 		// add RangeSeekBar to pre-defined layout
 //		ViewGroup layout = (ViewGroup) findViewById(R.layout.activity_main); Here add up the viewGroup you are building 
@@ -58,7 +52,6 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		genericPointer_m = this.xyControllerObj_m;
 		Mapper.setContext(MainActivity.this);
 		//Create a new Mapper object specific for the activity
-		mapperObj_m = new MapperPrototype();
 		HashMap<Integer, Integer> subControllerMapObj_f = new HashMap<Integer, Integer>();
 		
 //		new Asyncparser().execute(continuousControllerVector_f);
@@ -82,6 +75,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				e_XYSubController_m = XYSubController.X_RANGE_CHANGE;
 				// TODO Auto-generated method stub
 				if ( isChecked ){
+					xyControllerObj_m.b_IsXVarOn_m = true;
 					bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_string", "Please enter x value");
 					bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_stringarray", continuousControllerVector_f );
 					SelectorDialog selectorDialog = new SelectorDialog();					
@@ -90,11 +84,14 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 					selectorDialog.show(getFragmentManager(), DISPLAY_SERVICE);
 					
 				}
+				else{
+					xyControllerObj_m.b_IsXVarOn_m = false;
+				}
 				
 			}
 			
 		});
-		
+//		
 		this.switchY.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 			final String[] continuousControllerVector_f = Mapper.getContinuos();
 			@Override
@@ -104,6 +101,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				// TODO Auto-generated method stub
 				if(isChecked)
 				{
+					xyControllerObj_m.b_IsYVarOn_m = true;
 					bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME), "Please enter y value");
 					bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME), continuousControllerVector_f );
 					SelectorDialog selectorDialog = new SelectorDialog();					
@@ -111,10 +109,36 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 					selectorDialog.selectorDialogListener_m = MainActivity.this;
 					selectorDialog.show(getFragmentManager(), DISPLAY_SERVICE);
 				}
+				else{
+					xyControllerObj_m.b_IsYVarOn_m = false;
+				}
 				
 			}
 			
 		});
+		
+		this.seekBarX.setSeekBarChangeListener(new com.beta.UIControls.WindowedSeekBar.SeekBarChangeListener() {
+			
+			@Override
+			public void SeekBarValueChanged(int Thumb1Value, int thumblX,
+					int Thumb2Value, int thumbrX, int width, int thumbY) {
+				// TODO Auto-generated method stub
+				xyControllerObj_m.setXRangeVector(new int[]{Thumb1Value, Thumb2Value});
+			}
+		});
+		
+		this.seekBarY.setSeekBarChangeListener(new com.beta.UIControls.WindowedSeekBar.SeekBarChangeListener() {
+			
+			@Override
+			public void SeekBarValueChanged(int Thumb1Value, int thumblX,
+					int Thumb2Value, int thumbrX, int width, int thumbY) {
+				// TODO Auto-generated method stub
+				xyControllerObj_m.setYRangeVector(new int[]{Thumb1Value, Thumb2Value});
+				
+			}
+		});
+		
+		
 		
 //		xyControllerObj_m.setOnTouchListener(new OnTouchListener(){
 //
@@ -133,11 +157,11 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 ////				int threeBit_f = x & 0x7;
 ////				threeBit_f = threeBit_f << 4;
 //				int functionValue_x = mapperObj_m.getFunctionValue(xyControllerObj_m, 1);
-//				
-//				//midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_x, x);
+				
+				//midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_x, x);
 ////		    	midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, 0x23, threeBit_f);
 ////				midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, 0x4A, sevenbBit_f);
-//    	    	//previousControlChange_f = value;
+    	    	//previousControlChange_f = value;
 //				int functionValue_y = mapperObj_m.getFunctionValue(xyControllerObj_m, 2);
 //				fractionConvert_f = xyControllerObj_m.getLayoutGridSideLength();
 //				fractionConvert_f = y/fractionConvert_f;
@@ -146,11 +170,16 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 //				//midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_y, y);
 //				return true;
 //			}
+//	@Override
+//	public void onSelectionMade(String selectedObject) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 //			
 //		});
 //		
-		
-	}
+//		
+				}
 	
 	
 	public class Asyncparser extends AsyncTask<String[], Integer, Void>

@@ -3,11 +3,11 @@ package com.beta.UIControls;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.beta.activities.R;
 
-public class XYViewGroup extends ViewGroup {
+public class XYViewGroup extends FrameLayout {
 	LayoutInflater layoutInflaterObj_m;
 	public XYViewGroup(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -27,6 +27,16 @@ public class XYViewGroup extends ViewGroup {
 	
 	
 	public void fn_InitViewGroup(Context context, LayoutInflater layoutInflater){
+		//Create RangeSeekBar with max and min value
+//		RangeSeekBar<Integer> seekBar = new RangeSeekBar<Integer>(20, 75, context);
+//		seekBar.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Integer>() {
+//		        @Override
+//		        public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+//		                // handle changed range values
+//		                Log.i("RangeSeekBar", "User selected new range values: MIN=" + minValue + ", MAX=" + maxValue);
+//		        }
+//		});
+//		this.addView(seekBar);
 		layoutInflater.inflate(R.layout.xy_viewgroup, this);
 	}
 
