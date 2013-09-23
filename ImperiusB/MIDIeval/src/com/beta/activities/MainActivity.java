@@ -7,9 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
@@ -17,6 +15,8 @@ import android.widget.Toast;
 
 import com.beta.ControlMapper.MapperPrototype;
 import com.beta.Controllability.IController;
+import com.beta.UIControls.RangeSeekBar;
+import com.beta.UIControls.RangeSeekBar.OnRangeSeekBarChangeListener;
 import com.beta.UIControls.XYController;
 import com.beta.UIControls.XYSubController;
 import com.beta.activities.SelectorDialog.ISelectorDialogListener;
@@ -40,6 +40,21 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		this.xyControllerObj_m = (XYController)this.findViewById(R.id.xy_controller);
 		this.switchX = (Switch)this.findViewById(R.id.switch1);
 		this.switchY = (Switch)this.findViewById(R.id.Switch02);
+		
+		//Create RangeSeekBar with max and min value
+		RangeSeekBar<Integer> seekBar = new RangeSeekBar<Integer>(20, 75, this);
+		seekBar.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Integer>() {
+		        @Override
+		        public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+		                // handle changed range values
+		                Log.i("RangeSeekBar", "User selected new range values: MIN=" + minValue + ", MAX=" + maxValue);
+		        }
+		});
+
+		// add RangeSeekBar to pre-defined layout
+//		ViewGroup layout = (ViewGroup) findViewById(R.layout.activity_main); Here add up the viewGroup you are building 
+//		layout.addView(seekBar);
+		
 		genericPointer_m = this.xyControllerObj_m;
 		Mapper.setContext(MainActivity.this);
 		//Create a new Mapper object specific for the activity
