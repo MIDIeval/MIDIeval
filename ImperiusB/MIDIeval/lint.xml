@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="DrawAllocation">
+        <ignore path="src/com/beta/UIControls/RangeSeekBar.java" />
+    </issue>
+    <issue id="UseValueOf">
+        <ignore path="src/com/beta/UIControls/RangeSeekBar.java" />
+    </issue>
+</lint>

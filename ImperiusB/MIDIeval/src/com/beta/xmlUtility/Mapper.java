@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.util.Log;
 
-
-
 public class Mapper 
 {
-	
 	private static Controllable object = null;
 	private static Context context;
 	private static ArrayList<Controllable> f_controllable_list;
-	public static Context getContext() {
+	public static Context getContext() 
+	{
 		return context;
+	}
+	
+	public Mapper()
+	{
+		
 	}
 	public static void setContext(Context context) {
 		Mapper.context = context;
