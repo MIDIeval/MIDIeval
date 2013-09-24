@@ -37,6 +37,8 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main);
 		this.xyControllerObj_m = (XYController)this.findViewById(R.id.xy_controller);
 		this.switchX = (Switch)this.findViewById(R.id.switch_01);
