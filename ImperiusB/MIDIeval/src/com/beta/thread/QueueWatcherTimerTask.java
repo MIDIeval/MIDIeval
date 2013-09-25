@@ -24,14 +24,14 @@ public class QueueWatcherTimerTask extends TimerTask{
 		if ( !this.queueObj_m.isEmpty() ){
 			//Ask Activity to notify the Write thread to start write operation
 			if ( getQueueWatcherListenerRef() != null ){
-				Log.i(s_Tag_m, "Queue is filling up");
+				//Log.i(s_Tag_m, "Queue is filling up");
 				this.getQueueWatcherListenerRef().fn_QueueIsNowFilling();
 			}
 			
 		}
 		else{
 			if ( getQueueWatcherListenerRef() != null ){
-				Log.i(s_Tag_m, "Queue is empty");
+				//Log.i(s_Tag_m, "Queue is empty");
 				this.getQueueWatcherListenerRef().fn_QueueIsNowEmpty();
 			}
 		}

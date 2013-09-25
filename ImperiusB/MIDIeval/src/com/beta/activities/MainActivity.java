@@ -5,17 +5,17 @@ import java.util.HashMap;
 import android.hardware.usb.UsbDevice;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beta.ControlMapper.MapperPrototype;
 import com.beta.Controllability.IController;
 import com.beta.UIControls.WindowedSeekBar;
-import com.beta.UIControls.WindowedSeekBar.SeekBarChangeListener;
 import com.beta.UIControls.XYController;
 import com.beta.UIControls.XYSubController;
 import com.beta.activities.SelectorDialog.ISelectorDialogListener;
@@ -34,9 +34,15 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 	
 	public WindowedSeekBar seekBarX;
 	public WindowedSeekBar seekBarY;
+	
+	TextView text_X;
+	TextView text_Y;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main);
 		this.xyControllerObj_m = (XYController)this.findViewById(R.id.xy_controller);
 		this.switchX = (Switch)this.findViewById(R.id.switch_01);
@@ -44,7 +50,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		this.seekBarX = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_01);
 		this.seekBarY = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_02);
 		
-
+		
 		// add RangeSeekBar to pre-defined layout
 //		ViewGroup layout = (ViewGroup) findViewById(R.layout.activity_main); Here add up the viewGroup you are building 
 //		layout.addView(seekBar);
@@ -67,6 +73,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		}
 		mapperObj_m.getControllerMapObj().put(xyControllerObj_m, subControllerMapObj_f);
 		
+		
 		this.switchX.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 			final String[] continuousControllerVector_f = Mapper.getContinuos();
 			@Override
@@ -86,6 +93,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				}
 				else{
 					xyControllerObj_m.b_IsXVarOn_m = false;
+					text_X.setText("none");
 				}
 				
 			}
@@ -102,8 +110,8 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				if(isChecked)
 				{
 					xyControllerObj_m.b_IsYVarOn_m = true;
-					bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME), "Please enter y value");
-					bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME), continuousControllerVector_f );
+					bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_string", "Please enter y value");
+					bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_stringarray", continuousControllerVector_f );
 					SelectorDialog selectorDialog = new SelectorDialog();					
 					selectorDialog.setArguments(bundleForDialogObj_m);
 					selectorDialog.selectorDialogListener_m = MainActivity.this;
@@ -111,6 +119,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				}
 				else{
 					xyControllerObj_m.b_IsYVarOn_m = false;
+					text_Y.setText("none");
 				}
 				
 			}
@@ -227,9 +236,13 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		switch ( e_XYSubController_m ){
 		case X_RANGE_CHANGE:
 			this.mapperObj_m.setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);
+			text_X = (TextView)findViewById(R.id.text_01);
+			text_X.setText(selectedObject);
 			break;
 		case Y_RANGE_CHANGE:
 			this.mapperObj_m.setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);
+			text_Y = (TextView)findViewById(R.id.text_02);
+			text_Y.setText(selectedObject);
 			break;
 		case DOUBLE_TAP:
 			this.mapperObj_m.setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);

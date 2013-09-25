@@ -12,14 +12,12 @@ import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.VelocityTrackerCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
-import android.view.View;
 
 import com.beta.Controllability.ControlValuePacket;
 import com.beta.Controllability.ControllerMode;
@@ -228,9 +226,11 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		
 	}
 	
+	long previousTime;
 	//Event Handlers
 	@Override
 	public boolean onTouchEvent(MotionEvent event){
+		
 		if ( event == null )
 			return false;
 		int i_Action_f = MotionEventCompat.getActionMasked(event);
@@ -268,6 +268,8 @@ public class XYController extends UIController implements GestureDetector.OnGest
 				//Log.d(s_DEBUG_TAG_M, "Velocity-X: " + VelocityTrackerCompat.getXVelocity(velocityTrackerObj_m, i_Pointer_f));
 				//Log.d(s_DEBUG_TAG_M, "Velocity-Y: " + VelocityTrackerCompat.getYVelocity(velocityTrackerObj_m, i_Pointer_f));
 				//For animation on touch down and up
+				Log.i("EVENT TIME", String.valueOf(((System.nanoTime() - previousTime)/1000000) ));
+				previousTime = System.nanoTime();
 				if ( this.b_IsTouchOutside_m )
 					return false;
 				this.d_XYCoordinates_m[0]= this.fn_GetX(event.getX() );
@@ -293,7 +295,7 @@ public class XYController extends UIController implements GestureDetector.OnGest
 					this.controlValuePacketObj_m.setSubControllerID(XYSubController.Y_RANGE_CHANGE.getValue());
 					IController.queueObj_m.offer(controlValuePacketObj_m);
 				}
-				
+				//Log.i( "QUEUE_STATUS", "QUEUE SIZE: " + IController.queueObj_m.size());
 				
 				invalidate();
 				//

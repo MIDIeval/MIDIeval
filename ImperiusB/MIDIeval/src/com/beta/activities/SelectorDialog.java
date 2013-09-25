@@ -1,23 +1,22 @@
 package com.beta.activities;
 
-import java.util.ArrayList;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.TextView;
+
 
 public class SelectorDialog extends DialogFragment {
-
+	
 	private String[] listOfControllables_m;
 	private String s_TitleHeader_m;
 	Bundle bundle;
 	public Bundle getBundle() {
 		return bundle;
 	}
-
-	public void setBundle(Bundle bundle) {
+		public void setBundle(Bundle bundle) {
 		this.bundle = bundle;
 		
 	}
@@ -46,6 +45,7 @@ public class SelectorDialog extends DialogFragment {
 		selectorBuilder_f.setTitle(s_TitleHeader_m);
 		selectorBuilder_f.setTitle(this.s_TitleHeader_m);
 		selectorBuilder_f.setItems(this.listOfControllables_m, new DialogInterface.OnClickListener() {
+			
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {

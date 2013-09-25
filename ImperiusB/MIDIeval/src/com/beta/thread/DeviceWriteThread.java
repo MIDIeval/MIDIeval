@@ -1,5 +1,6 @@
 package com.beta.thread;
 
+import java.util.NoSuchElementException;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -22,6 +23,7 @@ public class DeviceWriteThread extends Thread {
 	private float f_Value_m = -1.0f;
 	private static final String s_Tag_m = "DEVICE_WRITE_THREAD";
 	private MapperPrototype mapperPrototypeObj_m;
+	private float previousTime;
 	@Override 
 	public void run(){
 		while ( !this.b_ThreadExit_m ){
@@ -43,11 +45,15 @@ public class DeviceWriteThread extends Thread {
 					getDeviceWriteLockObj().lock();
 				}
 				try{
+					synchronized(IController.queueObj_m){
+						if ( !IController.queueObj_m.isEmpty() ){
+							controlValuePacketObj_m = IController.queueObj_m.poll();
+						}
+					}				
 					
-					controlValuePacketObj_m = IController.queueObj_m.poll();
-					Log.i(s_Tag_m, "Controller: " + controlValuePacketObj_m.getControllerType() + "Sub Controller: " + controlValuePacketObj_m.getSubControllerID());
 					if ( controlValuePacketObj_m != null )
 					{
+						Log.i(s_Tag_m, "Controller: " + controlValuePacketObj_m.getControllerType() + "Sub Controller: " + controlValuePacketObj_m.getSubControllerID());
 						this.f_Value_m = this.controlValuePacketObj_m.getValueVector();
 						Log.i(s_Tag_m, "Value: " + this.f_Value_m);
 						//Get the appropriate value using the Mapper facility
@@ -55,13 +61,19 @@ public class DeviceWriteThread extends Thread {
 						if ( this.midiOutputDeviceObj_m != null ){
 							if ( this.mapperPrototypeObj_m != null ){
 								functionValue_m = this.mapperPrototypeObj_m.getFunctionValue(controlValuePacketObj_m.getiControllerPointer(), controlValuePacketObj_m.getSubControllerID());
-								Log.i(this.s_Tag_m, "Sub Controller ID Function value: " + functionValue_m + ", Value: " + f_Value_m);
+								Log.i(s_Tag_m, "Sub Controller ID Function value: " + functionValue_m + ", Value: " + f_Value_m);
 								midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_m, (int)f_Value_m);
+								Log.i("WRITE TIME", String.valueOf((System.nanoTime() - previousTime)/1000000));
+								previousTime = System.nanoTime();
+								Log.i(s_Tag_m, "Queue Size:" + String.valueOf(IController.queueObj_m.size()));
 							//Keep writing to the Device
 							}
 						}
 						
 					}
+				}
+				catch ( NoSuchElementException ex){
+					//Log.e(s_Tag_m, ex.getMessage());
 				}
 				finally{
 					if (IController.queueObj_m.isEmpty()){
@@ -71,8 +83,8 @@ public class DeviceWriteThread extends Thread {
 				
 			}
 			try {
-				Log.i(s_Tag_m, "END OF ITERATION");
-				Thread.sleep(20);
+				//Log.i(s_Tag_m, "END OF ITERATION");
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
