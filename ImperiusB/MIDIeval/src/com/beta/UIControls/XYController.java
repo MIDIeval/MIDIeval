@@ -29,7 +29,7 @@ import com.beta.activities.R;
  *Function: Allows the user to interact with an XY-grid layout to control parameters 
  *Author: Hrishik Mishra 
  */
-public class XYController extends UIController implements GestureDetector.OnGestureListener {
+public class XYController extends UIController implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 	
 	
 	//Private Member for shape rendering process
@@ -80,7 +80,8 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	private int[] yRangeVector_m = new int[]{0, 50};
 	public boolean b_IsYVarOn_m = false;
 	public boolean b_IsXVarOn_m = false;
-	
+	public boolean b_IsDoubleTapOn_m = false;
+	private boolean  b_IsDoubleTapOdd_m = false;//true = odd number; false = even number (0 is even) 
 	//For events
 	private VelocityTracker velocityTrackerObj_m;
 	private GestureDetector gestureDectorObj_m;
@@ -237,7 +238,7 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		int i_Index_f = event.getActionIndex();
 		//Index to the Pointer to get Pressure, size etc information about UP/DOWN events
 		int i_Pointer_f = event.getPointerId(i_Index_f);//Pointer to the information about event.
-		//gestureDectorObj_m.onTouchEvent(event);	
+		gestureDectorObj_m.onTouchEvent(event);	
 		boolean b_IsOutsideBounds_f = false;
 		
 		switch ( i_Action_f )
@@ -919,6 +920,44 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	
 	public float fn_LinearCalculation(float value, int[] valueRange){
 		return valueRange[0] + ((valueRange[1] - valueRange[0])/(2.0f))*(value + 1 );
+	}
+
+	@Override
+	public boolean onDoubleTap(MotionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if ( this.b_IsDoubleTapOn_m ){
+			
+				if ( !this.b_IsDoubleTapOdd_m ){
+					this.b_IsDoubleTapOdd_m = true;
+					this.controlValuePacketObj_m = new ControlValuePacket(64);				
+				}
+				else{
+					this.b_IsDoubleTapOdd_m = false;
+					this.controlValuePacketObj_m = new ControlValuePacket(63);
+				}
+				this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
+				this.controlValuePacketObj_m.setSubControllerID(XYSubController.DOUBLE_TAP.getValue());
+				this.controlValuePacketObj_m.setiControllerPointer(this);
+				IController.queueObj_m.offer(controlValuePacketObj_m);
+				Log.i(s_DEBUG_TAG_M, "DOUBLE TAP");
+				return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean onDoubleTapEvent(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean onSingleTapConfirmed(MotionEvent e) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 

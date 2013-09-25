@@ -37,6 +37,8 @@ public class MapperPrototype {
 		}
 	}
 	public int getFunctionValue(IController controller, int subControllerID ){
+		if (controller == null)
+			return -24;
 		for ( IController controllerInList :this.controllerMapObj_m.keySet()){
 			HashMap<Integer, Integer> tempSubControllerMap = this.controllerMapObj_m.get(controllerInList);
 			if ( controllerInList.getClass().isAssignableFrom(controller.getClass())) {

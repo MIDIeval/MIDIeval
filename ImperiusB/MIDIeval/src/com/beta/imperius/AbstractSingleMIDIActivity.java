@@ -17,6 +17,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.beta.ControlMapper.MapperPrototype;
+import com.beta.Controllability.IController;
 import com.beta.MIDIUSBFunctinality.MIDIInputDevice;
 import com.beta.MIDIUSBFunctinality.MIDIOutputDevice;
 import com.beta.MIDIUSBFunctinality.UsbCommunication;
@@ -101,7 +102,13 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 	
 	@Override
 	public void onDetachedDevice(UsbDevice usbDevice){
+		IController.queueObj_m.clear();
+		queueWatcherTimerTaskObj_m.cancel();
+		queueWatcherTimerTaskObj_m.fn_StopTimer();
 		
+		deviceWriteThread_m.setIsToBeSuspended(true);
+		deviceWriteThread_m = null;
+		System.gc();
 	}
 	
 	@Override

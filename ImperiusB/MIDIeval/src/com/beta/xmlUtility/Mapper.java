@@ -40,7 +40,7 @@ public class Mapper
 		return sbObj.toString().split(" ");
 	}
 	
-	public static String[] getDigital()
+	public static String[] getDiscete()
 	{
 		//f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
 		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();
@@ -61,7 +61,7 @@ public class Mapper
 		return sbObj.toString().split(" ");
 	}
 	
-	public static String[] getDiscrete()
+	public static String[] getDigital()
 	{
 		//f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
 		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();

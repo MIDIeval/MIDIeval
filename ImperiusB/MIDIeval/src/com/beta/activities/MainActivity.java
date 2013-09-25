@@ -29,6 +29,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 	private XYController xyControllerObj_m;
 	private Switch switchX;
 	private Switch switchY;
+	private Switch switchDoubleTap;
 	private Bundle bundleForDialogObj_m = new Bundle();
 	private XYSubController e_XYSubController_m;
 	
@@ -37,7 +38,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 	
 	TextView text_X;
 	TextView text_Y;
-	
+	TextView text_DoubleTap;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 		this.xyControllerObj_m = (XYController)this.findViewById(R.id.xy_controller);
 		this.switchX = (Switch)this.findViewById(R.id.switch_01);
 		this.switchY = (Switch)this.findViewById(R.id.switch_02);
+		this.switchDoubleTap = (Switch)this.findViewById(R.id.switch_03);
 		this.seekBarX = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_01);
 		this.seekBarY = (WindowedSeekBar)this.findViewById(R.id.windowedseekbar_02);
 		
@@ -120,6 +122,31 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 				else{
 					xyControllerObj_m.b_IsYVarOn_m = false;
 					text_Y.setText("none");
+				}
+				
+			}
+			
+		});
+		this.switchDoubleTap.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+			final String[] digitalController_f = Mapper.getDigital();
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				e_XYSubController_m = XYSubController.DOUBLE_TAP;
+				// TODO Auto-generated method stub
+				if(isChecked)
+				{
+					xyControllerObj_m.b_IsDoubleTapOn_m = true;
+					bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_string", "Please enter double tap value");
+					bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_stringarray", digitalController_f );
+					SelectorDialog selectorDialog = new SelectorDialog();					
+					selectorDialog.setArguments(bundleForDialogObj_m);
+					selectorDialog.selectorDialogListener_m = MainActivity.this;
+					selectorDialog.show(getFragmentManager(), DISPLAY_SERVICE);
+				}
+				else{
+					xyControllerObj_m.b_IsDoubleTapOn_m = false;
+					text_DoubleTap.setText("none");
 				}
 				
 			}
@@ -245,6 +272,8 @@ public class MainActivity extends AbstractSingleMIDIActivity implements ISelecto
 			text_Y.setText(selectedObject);
 			break;
 		case DOUBLE_TAP:
+			text_DoubleTap = (TextView)findViewById(R.id.text_03);
+			text_DoubleTap.setText(selectedObject);
 			this.mapperObj_m.setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);
 			break;
 		default:

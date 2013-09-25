@@ -82,6 +82,29 @@
                 android:text="none" 
                 android:paddingLeft="5dp"/>
         </TableRow>
+        <TableRow
+            android:id="@+id/xy_settingRow_03"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <Switch
+                android:id="@+id/switch_03"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Double tap"
+                android:padding="5dp" />
+            <Space
+                android:layout_weight="2.5"/>
+             <TextView
+                android:id="@+id/text_03"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="none" 
+                android:paddingLeft="5dp"/>
+          </TableRow>
     </TableLayout>
 
 </RelativeLayout>

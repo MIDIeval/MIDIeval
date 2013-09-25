@@ -83,4 +83,9 @@ public class QueueWatcherTimerTask extends TimerTask{
 		this.queueWatcherListenerRef_m = queueWatcherListenerRef_m;
 	}
 
+	public void fn_StopTimer(){
+		QueueWatcherTimerTask.timerObj_m.cancel();
+		QueueWatcherTimerTask.timerObj_m.purge();
+		
+	}
 }
