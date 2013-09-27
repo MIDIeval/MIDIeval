@@ -165,7 +165,7 @@ public final class MIDIOutputDevice
 	 *@Param 2: channel( 0-15 )
 	 *@Param 3: program( 0-127 )*/		
 	public void fn_ProgramChangeMessage(int cable, int channel, int program){
-		this.fn_SendMIDIMessage(0xC, cable, 0xC | (channel & 0xf), program, 0);
+		this.fn_SendMIDIMessage(0xC, cable, 0xC0 | (channel & 0xf), program, 0);
 	}
 	
 	/*Function that sends the Channel pressure MIDI message by bulk transfer to the peripheral USB device
@@ -173,7 +173,7 @@ public final class MIDIOutputDevice
 	 *@Param 2: channel( 0-15 )
 	 *@Param 3: Aftertouch pressure ( 0-127 ) */	
 	public void fn_ChannelPressureMessage(int cable, int channel, int pressure){
-		this.fn_SendMIDIMessage(0xD, cable, 0xD | (channel & 0xf), pressure, 0);
+		this.fn_SendMIDIMessage(0xD, cable, 0xD0 | (channel & 0xf), pressure, 0);
 	}
 	
 	/*Function that sends the Pitch bend change MIDI message by bulk transfer to the peripheral USB device
@@ -181,7 +181,7 @@ public final class MIDIOutputDevice
 	 *@Param 2: channel( 0-15 )
 	 *@Param 3: Pitch bend amount(0(low)-8192(center)-16383(high)) 2 bytes*/	
 	public void fn_PitchBendChangeValueMessage(int cable, int channel, int amount){
-		this.fn_SendMIDIMessage(0xE, cable, 0xE | (channel & 0xf), amount & 0xff, (amount >> 0xff) & 0xff);
+		this.fn_SendMIDIMessage(0xE, cable, 0xE0 | (channel & 0xf), amount & 0xff, (amount >> 0xff) & 0xff);
 	}
 	
 	/*Function that sends the Pitch bend change MIDI message by bulk transfer to the peripheral USB device
