@@ -4,19 +4,18 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 import com.beta.Controllability.IController;
-import com.beta.activities.MainActivity;
 import com.beta.activities.R;
 import com.beta.activities.SelectorDialog;
 import com.beta.activities.SelectorDialog.ISelectorDialogListener;
@@ -28,6 +27,7 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 	private Switch switchX;
 	private Switch switchY;
 	private Switch switchDoubleTap;
+	private Switch switchFling;
 	private AbstractSingleMIDIActivity activityMainObj_m;
 	private IController genericPointer_m;
 	private XYController xyControllerObj_m;
@@ -38,6 +38,7 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 	private TextView text_X_m;
 	private TextView text_Y_m;
 	private TextView text_DoubleTap_m;
+	private SeekBar seekBarFlingObj_m;
 	private HashMap<Integer, Integer> subControllerMapObj_m = new HashMap<Integer, Integer>();
 	
 	public void onAttach(Activity activity){
@@ -59,12 +60,15 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 		this.switchX = (Switch)containerView.findViewById(R.id.switch_01);
 		this.switchY = (Switch)containerView.findViewById(R.id.switch_02);
 		this.switchDoubleTap = (Switch)containerView.findViewById(R.id.switch_03);
+		this.switchFling = (Switch)containerView.findViewById(R.id.switch_04);
 		this.seekBarX_m = (WindowedSeekBar)containerView.findViewById(R.id.windowedseekbar_01);
 		this.seekBarY_m = (WindowedSeekBar)containerView.findViewById(R.id.windowedseekbar_02);
+		this.seekBarFlingObj_m = (SeekBar)containerView.findViewById(R.id.seekBar_01);
 		text_X_m = (TextView)containerView.findViewById(R.id.text_01);
 		text_Y_m = (TextView)containerView.findViewById(R.id.text_02);
 		text_DoubleTap_m = (TextView)containerView.findViewById(R.id.text_03);
 		this.fn_RegisterSwitchListeners();
+		this.fn_RegisterSeekBarListeners();
 		return containerView;
 	}
 	
@@ -88,6 +92,31 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 						int Thumb2Value, int thumbrX, int width, int thumbY) {
 					// TODO Auto-generated method stub
 					xyControllerObj_m.setYRangeVector(new int[]{Thumb1Value, Thumb2Value});
+					
+				}
+			});
+		}
+		if ( this.seekBarFlingObj_m != null ){
+			this.seekBarFlingObj_m.setMax(2);
+			this.seekBarFlingObj_m.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+				 
+				@Override
+				public void onStopTrackingTouch(SeekBar seekBar) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onStartTrackingTouch(SeekBar seekBar) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onProgressChanged(SeekBar seekBar, int progress,
+						boolean fromUser) {
+					// TODO Auto-generated method stub
+					xyControllerObj_m.i_FlingSpeed_m = 100*progress;
 					
 				}
 			});
@@ -148,6 +177,21 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 				}
 				
 			});
+			
+			if ( this.switchFling != null ){
+				this.switchFling.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+					
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+						// TODO Auto-generated method stub
+						if ( isChecked )
+							xyControllerObj_m.b_IsFlingOn_m = true;
+						else
+							xyControllerObj_m.b_IsFlingOn_m = false;
+							
+					}
+				});
+			}
 		}
 		if ( this.switchDoubleTap != null ){
 			this.switchDoubleTap.setOnCheckedChangeListener(new OnCheckedChangeListener(){
@@ -187,10 +231,12 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 		switch ( e_XYSubController_m ){
 		case X_RANGE_CHANGE:
 			this.activityMainObj_m.getMapper().setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);
+			this.activityMainObj_m.getMapper().setSubControllerValue(genericPointer_m, XYSubController.FLING_X.getValue(), functionValue);
 			text_X_m.setText(selectedObject);
 			break;
 		case Y_RANGE_CHANGE:
 			this.activityMainObj_m.getMapper().setSubControllerValue(genericPointer_m, this.e_XYSubController_m.getValue(), functionValue);
+			this.activityMainObj_m.getMapper().setSubControllerValue(genericPointer_m, XYSubController.FLING_Y.getValue(), functionValue);
 			text_Y_m.setText(selectedObject);
 			break;
 		case DOUBLE_TAP:

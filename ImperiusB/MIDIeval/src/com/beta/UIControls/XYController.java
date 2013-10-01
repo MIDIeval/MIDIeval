@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.os.AsyncTask;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -78,13 +79,18 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	private int[] i_MeasureVector_m = new int[2];
 	private int[] xRangeVector_m = new int[]{0, 50};//XMin, XMax, YMin, YMax
 	private int[] yRangeVector_m = new int[]{0, 50};
+	public int i_FlingSpeed_m = 10;//Controls the fling speed
 	public boolean b_IsYVarOn_m = false;
 	public boolean b_IsXVarOn_m = false;
 	public boolean b_IsDoubleTapOn_m = false;
 	private boolean  b_IsDoubleTapOdd_m = false;//true = odd number; false = even number (0 is even) 
+	public boolean b_IsFlingOn_m = false;
 	//For events
 	private VelocityTracker velocityTrackerObj_m;
 	private GestureDetector gestureDectorObj_m;
+	private static final int i_VELOCITY_THRESHOLD_FOR_FLING_m = 300;//in pixels per second
+	private static final int i_DISTANCE_THRESHOLD_FOR_FLING_M = 120;//in pixels traversed
+	private AsyncFlingEffectTask asyncTaskForFlingObj_m;
 	
 	//Const values to be used for custom view
 	private static final int i_DEFAULT_LAYOUT_HEIGHT_m = 10;
@@ -101,6 +107,42 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	//Application specific variables
 	private static HashMap<Integer, ControllerMode> xyControllerMapObj_m;
 	private boolean b_IsTouchOutside_m = false;
+	
+	
+	private class AsyncFlingEffectTask extends AsyncTask<Float, Void, Void>{
+		private boolean b_IsToBeCancelled_m = false;
+		private ControlValuePacket controlValuePacketAsyncFlingObj_m;
+		@Override
+		protected Void doInBackground(Float... Float) {
+			// TODO Auto-generated method stub
+			int i_CurrentValue_f = Float[0].intValue();
+			int i_BorderValue_f = Float[1].intValue();
+			int i_SubController_f = Float[2].intValue();
+			while ( !b_IsToBeCancelled_m ){
+				if (Math.abs(i_CurrentValue_f - i_BorderValue_f) == 0 )//Float[1] is the Border value;
+					break;
+				controlValuePacketAsyncFlingObj_m = new ControlValuePacket(i_CurrentValue_f = i_CurrentValue_f + (i_CurrentValue_f > i_BorderValue_f?-1:1));
+				controlValuePacketAsyncFlingObj_m.setControllerType(e_ControllerType_m);
+				controlValuePacketAsyncFlingObj_m.setiControllerPointer(XYController.this);
+				controlValuePacketAsyncFlingObj_m.setSubControllerID(i_SubController_f);
+				Log.i(s_DEBUG_TAG_M, "Value to Write: " + controlValuePacketAsyncFlingObj_m.getValueVector() );
+				IController.queueObj_m.offer(controlValuePacketAsyncFlingObj_m);
+				try {
+					Thread.sleep(XYController.this.i_FlingSpeed_m);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+			return null;
+		}
+
+
+		
+	}
+	
 	//Static section
 	static{
 		XYController.xyControllerMapObj_m = new HashMap<Integer, ControllerMode>(5, 0.75f);
@@ -110,7 +152,8 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		XYController.xyControllerMapObj_m.put(XYSubController.Y_RANGE_CHANGE.getValue() , ControllerMode.CONTINUOUS );
 		XYController.xyControllerMapObj_m.put(XYSubController.DOUBLE_TAP.getValue() , ControllerMode.DIGITAL );
 		XYController.xyControllerMapObj_m.put(XYSubController.SINGLE_TAP.getValue() , ControllerMode.DIGITAL );
-		XYController.xyControllerMapObj_m.put(XYSubController.FLING.getValue() , ControllerMode.DIGITAL );
+		XYController.xyControllerMapObj_m.put(XYSubController.FLING_X.getValue() , ControllerMode.DIGITAL );
+		XYController.xyControllerMapObj_m.put(XYSubController.FLING_Y.getValue() , ControllerMode.DIGITAL );
 		XYController.xyControllerMapObj_m.put(XYSubController.ACTION_UP.getValue() , ControllerMode.DIGITAL );
 	}
 	
@@ -234,6 +277,10 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		
 		if ( event == null )
 			return false;
+		if ( asyncTaskForFlingObj_m != null && !asyncTaskForFlingObj_m.isCancelled() ){
+			asyncTaskForFlingObj_m.b_IsToBeCancelled_m = true;
+			asyncTaskForFlingObj_m.cancel(true);
+		}
 		int i_Action_f = MotionEventCompat.getActionMasked(event);
 		int i_Index_f = event.getActionIndex();
 		//Index to the Pointer to get Pressure, size etc information about UP/DOWN events
@@ -329,10 +376,46 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	}
 
 	@Override
-	public boolean onFling(MotionEvent arg0, MotionEvent arg1, float arg2,
-			float arg3) {
+	public boolean onFling(MotionEvent firstMotion, MotionEvent endMotion, float velocityX,
+			float velocityY) {
 		// TODO Auto-generated method stub
-		Log.d(s_DEBUG_TAG_M, "Gesture was fling");
+		if ( this.b_IsFlingOn_m ){
+			if ((Math.abs(firstMotion.getX() - endMotion.getX())) > this.i_DISTANCE_THRESHOLD_FOR_FLING_M && Math.abs(velocityX) > this.i_VELOCITY_THRESHOLD_FOR_FLING_m)
+			{
+				if ( firstMotion.getX() > endMotion.getX() ){
+					Log.d(s_DEBUG_TAG_M, "THIS IS X fling to left");
+					asyncTaskForFlingObj_m = new AsyncFlingEffectTask();
+					asyncTaskForFlingObj_m.execute(this.fn_LinearCalculation(this.fn_Normalize(this.fn_GetX(firstMotion.getX() )), this.xRangeVector_m), this.fn_LinearCalculation(-1,this.xRangeVector_m ), (float)XYSubController.FLING_X.getValue());
+					//Put New control value packet into the queue
+				}
+				else{
+					Log.d(s_DEBUG_TAG_M, "THIS IS X fling to right");
+					asyncTaskForFlingObj_m = new AsyncFlingEffectTask();
+					asyncTaskForFlingObj_m.execute(this.fn_LinearCalculation(this.fn_Normalize(this.fn_GetX(firstMotion.getX() )), this.xRangeVector_m), this.fn_LinearCalculation(1,this.xRangeVector_m ),  (float)XYSubController.FLING_X.getValue());
+					//Put New control value packet into the queue
+				}
+				return true;
+				
+			}
+			if ((Math.abs(firstMotion.getY() - endMotion.getY())) > this.i_DISTANCE_THRESHOLD_FOR_FLING_M && Math.abs(velocityY) > this.i_VELOCITY_THRESHOLD_FOR_FLING_m)
+			{
+				if ( firstMotion.getY() > endMotion.getY() ){
+					Log.d(s_DEBUG_TAG_M, "THIS IS Y fling to up");
+					asyncTaskForFlingObj_m = new AsyncFlingEffectTask();
+					asyncTaskForFlingObj_m.execute(this.fn_LinearCalculation(-this.fn_Normalize(this.fn_GetY(firstMotion.getY() )), this.yRangeVector_m), this.fn_LinearCalculation(1,this.yRangeVector_m ),  (float)XYSubController.FLING_Y.getValue());
+					//Put New control value packet into the queue
+				}
+				else{
+					Log.d(s_DEBUG_TAG_M, "THIS IS Y fling to bottom");
+					asyncTaskForFlingObj_m = new AsyncFlingEffectTask();
+					asyncTaskForFlingObj_m.execute(this.fn_LinearCalculation(-this.fn_Normalize(this.fn_GetY(firstMotion.getY() )), this.yRangeVector_m), this.fn_LinearCalculation(-1,this.yRangeVector_m ),  (float)XYSubController.FLING_Y.getValue());
+					//Put New control value packet into the queue
+				}
+				return true;
+				
+			}
+		}
+		Log.d(s_DEBUG_TAG_M, "Gesture was fling not recognized");
 		return false;
 	}
 

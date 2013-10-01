@@ -5,5 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_launcher">LauncherActivity</string>
     <string name="SELECTOR_DIALOG_BUNDLE_NAME">SELECTOR_DIALOG</string>
+    <string name="title_activity_master_layout">MasterLayoutActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

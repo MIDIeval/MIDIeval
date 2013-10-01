@@ -123,41 +123,64 @@ containing a value of this type.
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int seek_thumb_normal=0x7f020001;
-        public static final int seek_thumb_pressed=0x7f020002;
+        public static final int bgfader=0x7f020000;
+        public static final int bgh=0x7f020001;
+        public static final int centre_bar=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int leader=0x7f020005;
+        public static final int left_end=0x7f020006;
+        public static final int leftithumb=0x7f020007;
+        public static final int leftthumb=0x7f020008;
+        public static final int right_end=0x7f020009;
+        public static final int rightithumb=0x7f02000a;
+        public static final int rightthumb=0x7f02000b;
+        public static final int seek_thumb_normal=0x7f02000c;
+        public static final int seek_thumb_pressed=0x7f02000d;
     }
     public static final class id {
-        public static final int Switch02=0x7f050007;
-        public static final int Switch03=0x7f050008;
-        public static final int action_settings=0x7f05000e;
+        public static final int action_settings=0x7f050016;
         public static final int center=0x7f050000;
         public static final int leftBottom=0x7f050001;
         public static final int leftTop=0x7f050004;
         public static final int rightBottom=0x7f050002;
         public static final int rightTop=0x7f050003;
-        public static final int seek_01=0x7f05000c;
-        public static final int switch1=0x7f050006;
-        public static final int switch_01=0x7f05000b;
-        public static final int text_01=0x7f05000d;
-        public static final int xy_controller=0x7f050005;
-        public static final int xy_settingRow_01=0x7f05000a;
-        public static final int xy_settingtable=0x7f050009;
+        public static final int seekBar_01=0x7f050015;
+        public static final int switch_01=0x7f050009;
+        public static final int switch_02=0x7f05000d;
+        public static final int switch_03=0x7f050011;
+        public static final int switch_04=0x7f050014;
+        public static final int text_01=0x7f05000b;
+        public static final int text_02=0x7f05000f;
+        public static final int text_03=0x7f050012;
+        public static final int windowedseekbar_01=0x7f05000a;
+        public static final int windowedseekbar_02=0x7f05000e;
+        public static final int xy_controller=0x7f050006;
+        public static final int xy_controller_fragment=0x7f050005;
+        public static final int xy_settingRow_01=0x7f050008;
+        public static final int xy_settingRow_02=0x7f05000c;
+        public static final int xy_settingRow_03=0x7f050010;
+        public static final int xy_settingRow_04=0x7f050013;
+        public static final int xy_settingtable=0x7f050007;
     }
     public static final class layout {
         public static final int activity_launcher=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int xy_viewgroup=0x7f030002;
+        public static final int activity_master_layout=0x7f030002;
+        public static final int xy_fragment=0x7f030003;
     }
     public static final class menu {
         public static final int launcher=0x7f090000;
         public static final int main=0x7f090001;
+        public static final int master_layout=0x7f090002;
     }
     public static final class string {
         public static final int SELECTOR_DIALOG_BUNDLE_NAME=0x7f070003;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070005;
         public static final int title_activity_launcher=0x7f070002;
+        public static final int title_activity_master_layout=0x7f070004;
     }
     public static final class style {
         /** 

@@ -3,8 +3,8 @@
     package="com.beta.activities"
     android:versionCode="1"
     android:versionName="1.0" >
-    <uses-feature
-        android:name = "android.hardware.usb.host" />
+
+    <uses-feature android:name="android.hardware.usb.host" />
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -26,11 +26,19 @@
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
-            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/device_filter" />        
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
         </activity>
         <activity
             android:name="com.beta.activities.LauncherActivity"
             android:label="@string/title_activity_launcher" >
+        </activity>
+        <activity
+            android:name="com.beta.activities.MasterLayoutActivity"
+            android:label="@string/title_activity_master_layout"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
     </application>
 
