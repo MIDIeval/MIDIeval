@@ -85,6 +85,7 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	public boolean b_IsDoubleTapOn_m = false;
 	private boolean  b_IsDoubleTapOdd_m = false;//true = odd number; false = even number (0 is even) 
 	public boolean b_IsFlingOn_m = false;
+	private XYCurrentSettingDetails xyCurrentSettingDetails_m;
 	//For events
 	private VelocityTracker velocityTrackerObj_m;
 	private GestureDetector gestureDectorObj_m;
@@ -112,19 +113,22 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	private class AsyncFlingEffectTask extends AsyncTask<Float, Void, Void>{
 		private boolean b_IsToBeCancelled_m = false;
 		private ControlValuePacket controlValuePacketAsyncFlingObj_m;
+		private XYSubController e_XYSubController_m;
 		@Override
 		protected Void doInBackground(Float... Float) {
 			// TODO Auto-generated method stub
 			int i_CurrentValue_f = Float[0].intValue();
 			int i_BorderValue_f = Float[1].intValue();
 			int i_SubController_f = Float[2].intValue();
+			if ( i_SubController_f == XYSubController.FLING_X.getValue() )
+				e_XYSubController_m = XYSubController.FLING_X;
+			else if ( i_SubController_f == XYSubController.FLING_Y.getValue() )
+				e_XYSubController_m = XYSubController.FLING_Y;
+				
 			while ( !b_IsToBeCancelled_m ){
 				if (Math.abs(i_CurrentValue_f - i_BorderValue_f) == 0 )//Float[1] is the Border value;
 					break;
-				controlValuePacketAsyncFlingObj_m = new ControlValuePacket(i_CurrentValue_f = i_CurrentValue_f + (i_CurrentValue_f > i_BorderValue_f?-1:1));
-				controlValuePacketAsyncFlingObj_m.setControllerType(e_ControllerType_m);
-				controlValuePacketAsyncFlingObj_m.setiControllerPointer(XYController.this);
-				controlValuePacketAsyncFlingObj_m.setSubControllerID(i_SubController_f);
+				controlValuePacketAsyncFlingObj_m = fn_CreateControlValuePacket( e_XYSubController_m, (i_CurrentValue_f = i_CurrentValue_f + (i_CurrentValue_f > i_BorderValue_f?-1:1)));
 				Log.i(s_DEBUG_TAG_M, "Value to Write: " + controlValuePacketAsyncFlingObj_m.getValueVector() );
 				IController.queueObj_m.offer(controlValuePacketAsyncFlingObj_m);
 				try {
@@ -328,20 +332,12 @@ public class XYController extends UIController implements GestureDetector.OnGest
 				if ( this.b_IsXVarOn_m ){
 					float valueX = this.fn_LinearCalculation(this.fn_Normalize(this.fn_GetX(event.getX() )), this.xRangeVector_m);
 					Log.i("XY_CONTROLLER", "X," + valueX );
-					this.controlValuePacketObj_m = new ControlValuePacket(valueX);
-					this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
-					this.controlValuePacketObj_m.setiControllerPointer(this);
-					this.controlValuePacketObj_m.setSubControllerID(XYSubController.X_RANGE_CHANGE.getValue());
-					IController.queueObj_m.offer(controlValuePacketObj_m);
+					IController.queueObj_m.offer(this.fn_CreateControlValuePacket(XYSubController.X_RANGE_CHANGE, valueX));
 				}
 				if ( this.b_IsYVarOn_m ){
 					float valueY = this.fn_LinearCalculation(-this.fn_Normalize(this.fn_GetY(event.getY() )), this.yRangeVector_m);
-					Log.i("XY_CONTROLLER", "Y," + valueY );
-					this.controlValuePacketObj_m = new ControlValuePacket(valueY);
-					this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
-					this.controlValuePacketObj_m.setiControllerPointer(this);
-					this.controlValuePacketObj_m.setSubControllerID(XYSubController.Y_RANGE_CHANGE.getValue());
-					IController.queueObj_m.offer(controlValuePacketObj_m);
+					Log.i("XY_CONTROLLER", "Y," + valueY );					
+					IController.queueObj_m.offer(this.fn_CreateControlValuePacket(XYSubController.X_RANGE_CHANGE, valueY));
 				}
 				//Log.i( "QUEUE_STATUS", "QUEUE SIZE: " + IController.queueObj_m.size());
 				
@@ -1008,21 +1004,18 @@ public class XYController extends UIController implements GestureDetector.OnGest
 	@Override
 	public boolean onDoubleTap(MotionEvent e) {
 		// TODO Auto-generated method stub
-		
+		ControlValuePacket doubleTapControlPacket_f;
 		if ( this.b_IsDoubleTapOn_m ){
 			
 				if ( !this.b_IsDoubleTapOdd_m ){
 					this.b_IsDoubleTapOdd_m = true;
-					this.controlValuePacketObj_m = new ControlValuePacket(64);				
+					doubleTapControlPacket_f = this.fn_CreateControlValuePacket(XYSubController.DOUBLE_TAP, 64);	
 				}
 				else{
 					this.b_IsDoubleTapOdd_m = false;
-					this.controlValuePacketObj_m = new ControlValuePacket(63);
-				}
-				this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
-				this.controlValuePacketObj_m.setSubControllerID(XYSubController.DOUBLE_TAP.getValue());
-				this.controlValuePacketObj_m.setiControllerPointer(this);
-				IController.queueObj_m.offer(controlValuePacketObj_m);
+					doubleTapControlPacket_f = this.fn_CreateControlValuePacket(XYSubController.DOUBLE_TAP, 63);	
+				}				
+				IController.queueObj_m.offer(doubleTapControlPacket_f);
 				Log.i(s_DEBUG_TAG_M, "DOUBLE TAP");
 				return true;
 		}
@@ -1042,6 +1035,51 @@ public class XYController extends UIController implements GestureDetector.OnGest
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 
+	/**
+	 * @return the xyCurrentSettingDetails_m
+	 */
+	public XYCurrentSettingDetails getXYCurrentSettingDetails() {
+		return xyCurrentSettingDetails_m;
+	}
+
+	/**
+	 * @param xyCurrentSettingDetails_m the xyCurrentSettingDetails_m to set
+	 */
+	public void setXYCurrentSettingDetails(XYCurrentSettingDetails xyCurrentSettingDetails_m) {
+		this.xyCurrentSettingDetails_m = xyCurrentSettingDetails_m;
+	}
+	
+	public ControlValuePacket fn_CreateControlValuePacket(XYSubController xySubController, float value){
+		this.controlValuePacketObj_m = new ControlValuePacket(value);
+		this.controlValuePacketObj_m.setControllerType(e_ControllerType_m);
+		this.controlValuePacketObj_m.setiControllerPointer(this);
+		switch ( xySubController ){
+		case X_RANGE_CHANGE:
+			this.controlValuePacketObj_m.setSubControllerID(XYSubController.X_RANGE_CHANGE.getValue());
+			this.controlValuePacketObj_m.setI_FunctionValue(this.xyCurrentSettingDetails_m.getI_XFunctionValue());
+			break;
+		case Y_RANGE_CHANGE:
+			this.controlValuePacketObj_m.setSubControllerID(XYSubController.Y_RANGE_CHANGE.getValue());
+			this.controlValuePacketObj_m.setI_FunctionValue(this.xyCurrentSettingDetails_m.getI_YFunctionValue());
+			break;
+		case DOUBLE_TAP:
+			this.controlValuePacketObj_m.setSubControllerID(XYSubController.DOUBLE_TAP.getValue());
+			this.controlValuePacketObj_m.setI_FunctionValue(this.xyCurrentSettingDetails_m.getI_DTFunctionValue());
+			break;
+		case FLING_X:
+			this.controlValuePacketObj_m.setSubControllerID(XYSubController.FLING_X.getValue());
+			this.controlValuePacketObj_m.setI_FunctionValue(this.xyCurrentSettingDetails_m.getI_XFunctionValue());
+			break;
+		case FLING_Y:
+			this.controlValuePacketObj_m.setSubControllerID(XYSubController.FLING_Y.getValue());
+			this.controlValuePacketObj_m.setI_FunctionValue(this.xyCurrentSettingDetails_m.getI_YFunctionValue());
+			break;
+			
+			
+		}
+		
+		return this.controlValuePacketObj_m;
+		
+	}
 }

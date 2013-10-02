@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Currently pressed, turning the toggle ON -->
+    <item android:state_checked="true" android:state_pressed="true" android:drawable="@drawable/x_pressed" />
+    <!-- Currently pressed, turning the toggle OFF -->
+    <item android:state_pressed="true" android:drawable="@drawable/x_pressed" />
+    <!-- Default UNCHECKED state of the toggle -->
+    <item android:state_checked="false" android:drawable="@drawable/x_unchecked"/>
+     <!-- Default CHECKED state of the toggle -->
+    <item android:state_checked="true" android:drawable="@drawable/x_checked" />
+ </selector>

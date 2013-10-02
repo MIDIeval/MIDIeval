@@ -60,7 +60,8 @@ public class DeviceWriteThread extends Thread {
 						//Then get the right FunctionValue from the Mapper facility
 						if ( this.midiOutputDeviceObj_m != null ){
 							if ( this.mapperPrototypeObj_m != null ){
-								functionValue_m = this.mapperPrototypeObj_m.getFunctionValue(controlValuePacketObj_m.getiControllerPointer(), controlValuePacketObj_m.getSubControllerID());
+								//functionValue_m = this.mapperPrototypeObj_m.getFunctionValue(controlValuePacketObj_m.getiControllerPointer(), controlValuePacketObj_m.getSubControllerID());
+								functionValue_m = controlValuePacketObj_m.getI_FunctionValue();
 								Log.i(s_Tag_m, "Sub Controller ID Function value: " + functionValue_m + ", Value: " + f_Value_m);
 								midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_m, (int)f_Value_m);
 								Log.i("WRITE TIME", String.valueOf((System.nanoTime() - previousTime)/1000000));

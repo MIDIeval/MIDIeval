@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.beta.Controllability.IController;
 import com.beta.activities.R;
@@ -24,7 +25,7 @@ import com.beta.xmlUtility.Mapper;
 
 public class XYFragment extends Fragment implements ISelectorDialogListener{
 	private LayoutInflater layoutInflaterObj_m;
-	private Switch switchX;
+	private ToggleButton switchX;
 	private Switch switchY;
 	private Switch switchDoubleTap;
 	private Switch switchFling;
@@ -40,7 +41,8 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 	private TextView text_DoubleTap_m;
 	private SeekBar seekBarFlingObj_m;
 	private HashMap<Integer, Integer> subControllerMapObj_m = new HashMap<Integer, Integer>();
-	
+	private XYCurrentSettingDetails xyCurreSettingDetailsObj_m;
+	private XYSettings xySettingFrameLayout_m;
 	public void onAttach(Activity activity){
 		super.onAttach(activity);
 		this.activityMainObj_m = (AbstractSingleMIDIActivity) activity;
@@ -49,15 +51,22 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 	}
 
 	public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedInstanceBundle){
+		xyCurreSettingDetailsObj_m = new XYCurrentSettingDetails();		
 		View containerView = layoutInflater.inflate(R.layout.xy_fragment, container, false);
 		this.layoutInflaterObj_m = layoutInflater;
+		this.xySettingFrameLayout_m = (XYSettings)containerView.findViewById(R.id.xy_settings);
+		//Set the current setting object to the Frame Layout XY setting object
+		this.xySettingFrameLayout_m.setXYCurrentSettingDetails(xyCurreSettingDetailsObj_m);
+		
 		this.xyControllerObj_m = (XYController)containerView.findViewById(R.id.xy_controller);
+		//Set the current setting object to the XY controller too
+		this.xyControllerObj_m.setXYCurrentSettingDetails(xyCurreSettingDetailsObj_m);
 		for ( Integer keyValue: this.xyControllerObj_m.getSubControllerMap().keySet()){
 			subControllerMapObj_m.put(keyValue, Integer.valueOf(-1));
 		}
 		this.activityMainObj_m.getMapper().getControllerMapObj().put(xyControllerObj_m, subControllerMapObj_m);
 		this.genericPointer_m = this.xyControllerObj_m;
-		this.switchX = (Switch)containerView.findViewById(R.id.switch_01);
+		this.switchX = (ToggleButton)containerView.findViewById(R.id.switch_01);
 		this.switchY = (Switch)containerView.findViewById(R.id.switch_02);
 		this.switchDoubleTap = (Switch)containerView.findViewById(R.id.switch_03);
 		this.switchFling = (Switch)containerView.findViewById(R.id.switch_04);
@@ -133,13 +142,13 @@ public class XYFragment extends Fragment implements ISelectorDialogListener{
 					// TODO Auto-generated method stub
 					if ( isChecked ){
 						xyControllerObj_m.b_IsXVarOn_m = true;
-						bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_string", "Please enter x value");
-						bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_stringarray", continuousControllerVector_f );
-						SelectorDialog selectorDialog = new SelectorDialog();					
-						selectorDialog.setArguments(bundleForDialogObj_m);
-						selectorDialog.selectorDialogListener_m = XYFragment.this;
-						selectorDialog.show(getFragmentManager(), Activity.DISPLAY_SERVICE);
-						
+//						bundleForDialogObj_m.putString(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_string", "Please enter x value");
+//						bundleForDialogObj_m.putStringArray(getString(R.string.SELECTOR_DIALOG_BUNDLE_NAME)+"_stringarray", continuousControllerVector_f );
+//						SelectorDialog selectorDialog = new SelectorDialog();					
+//						selectorDialog.setArguments(bundleForDialogObj_m);
+//						selectorDialog.selectorDialogListener_m = XYFragment.this;
+//						selectorDialog.show(getFragmentManager(), Activity.DISPLAY_SERVICE);
+//						
 						
 					}
 					else{

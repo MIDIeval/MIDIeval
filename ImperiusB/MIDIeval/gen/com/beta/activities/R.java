@@ -137,12 +137,22 @@ containing a value of this type.
         public static final int rightthumb=0x7f02000b;
         public static final int seek_thumb_normal=0x7f02000c;
         public static final int seek_thumb_pressed=0x7f02000d;
+        public static final int selector=0x7f02000e;
+        public static final int x_checked=0x7f02000f;
+        public static final int x_pressed=0x7f020010;
+        public static final int x_unchecked=0x7f020011;
     }
     public static final class id {
-        public static final int action_settings=0x7f050016;
+        public static final int action_settings=0x7f050025;
         public static final int center=0x7f050000;
+        public static final int check_box_01=0x7f050021;
+        public static final int check_box_02=0x7f050022;
+        public static final int check_box_03=0x7f050023;
+        public static final int check_box_04=0x7f050024;
         public static final int leftBottom=0x7f050001;
         public static final int leftTop=0x7f050004;
+        public static final int linerLayout_01=0x7f050020;
+        public static final int numberPicker1=0x7f05001a;
         public static final int rightBottom=0x7f050002;
         public static final int rightTop=0x7f050003;
         public static final int seekBar_01=0x7f050015;
@@ -150,9 +160,17 @@ containing a value of this type.
         public static final int switch_02=0x7f05000d;
         public static final int switch_03=0x7f050011;
         public static final int switch_04=0x7f050014;
+        public static final int table_layout_01=0x7f050017;
+        public static final int table_row_01=0x7f050018;
+        public static final int table_row_02=0x7f05001c;
+        public static final int table_row_03=0x7f05001e;
         public static final int text_01=0x7f05000b;
         public static final int text_02=0x7f05000f;
         public static final int text_03=0x7f050012;
+        public static final int text_View_01=0x7f05001d;
+        public static final int toggle_Button_1=0x7f050019;
+        public static final int toggle_Button_2=0x7f05001b;
+        public static final int toggle_Button_3=0x7f05001f;
         public static final int windowedseekbar_01=0x7f05000a;
         public static final int windowedseekbar_02=0x7f05000e;
         public static final int xy_controller=0x7f050006;
@@ -161,6 +179,7 @@ containing a value of this type.
         public static final int xy_settingRow_02=0x7f05000c;
         public static final int xy_settingRow_03=0x7f050010;
         public static final int xy_settingRow_04=0x7f050013;
+        public static final int xy_settings=0x7f050016;
         public static final int xy_settingtable=0x7f050007;
     }
     public static final class layout {
@@ -168,6 +187,7 @@ containing a value of this type.
         public static final int activity_main=0x7f030001;
         public static final int activity_master_layout=0x7f030002;
         public static final int xy_fragment=0x7f030003;
+        public static final int xy_settings=0x7f030004;
     }
     public static final class menu {
         public static final int launcher=0x7f090000;
@@ -209,6 +229,9 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        /**  Button syle for the activity 
+         */
+        public static final int action_button_style=0x7f080002;
     }
     public static final class xml {
         public static final int device_filter=0x7f040000;

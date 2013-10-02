@@ -39,6 +39,26 @@ public class Mapper
 		}
 		return sbObj.toString().split(" ");
 	}
+	public static String[] getContinuosCCNumbers()
+	{
+		//f_controllable_list = Parser.parseValues(object, "CTRL", 2, getContext());
+		ArrayList<Controllable> f_continuos_list = new ArrayList<Controllable>();
+		StringBuilder sbObj = new StringBuilder();
+		for(Controllable controllableObj  : f_controllable_list)
+		{
+
+			for(int integerObj : ((Controllable) controllableObj).getF_attributes_list())
+			{
+				if(integerObj == 0)
+				{
+					f_continuos_list.add((Controllable)controllableObj);
+					sbObj.append(controllableObj.getF_attributes_list().get(0) + " ");
+				}
+			}  
+		Log.d("Object value", controllableObj.toString());
+		}
+		return sbObj.toString().split(" ");
+	}
 	
 	public static String[] getDiscete()
 	{

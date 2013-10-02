@@ -5,6 +5,7 @@ public class ControlValuePacket {
 	private ControllerType e_ControllerType_m;
 	private int i_SubControllerID_m;
 	private float f_ValueVector_m;
+	private int i_FunctionValue_m;
 	
 	public ControlValuePacket(float valueVector){
 		this.f_ValueVector_m = valueVector;
@@ -85,6 +86,26 @@ public class ControlValuePacket {
 	 */
 	public void setiControllerPointer(IController iControllerPointer_m) {
 		this.iControllerPointer_m = iControllerPointer_m;
+	}
+
+
+
+
+	/**
+	 * @return the i_FunctionValue_m
+	 */
+	public int getI_FunctionValue() {
+		return i_FunctionValue_m;
+	}
+
+
+
+
+	/**
+	 * @param i_FunctionValue_m the i_FunctionValue_m to set
+	 */
+	public void setI_FunctionValue(int i_FunctionValue_m) {
+		this.i_FunctionValue_m = i_FunctionValue_m;
 	}
 
 }
