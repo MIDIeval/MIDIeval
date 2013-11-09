@@ -20,6 +20,7 @@ public class DeviceWriteThread extends Thread {
 	private ControlValuePacket controlValuePacketObj_m;
 	private MIDIOutputDevice midiOutputDeviceObj_m;
 	private int functionValue_m = -1;
+	private int channelNumber_m = -1;
 	private float f_Value_m = -1.0f;
 	private static final String s_Tag_m = "DEVICE_WRITE_THREAD";
 	private MapperPrototype mapperPrototypeObj_m;
@@ -34,7 +35,11 @@ public class DeviceWriteThread extends Thread {
 				}
 				try {				
 					Log.i(s_Tag_m, "DEVICE WRITE THREAD waiting");
-					this.getQueueNotFullCondition().await();//AbstractActivity has to .signal() this object
+					//Lock is released from Write Thread
+					if ( IController.queueObj_m.size() == 0)
+						this.getQueueNotFullCondition().await();//AbstractActivity has to .signal() this object
+					else
+						this.b_IsToBeSuspended_m = false;
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -43,10 +48,12 @@ public class DeviceWriteThread extends Thread {
 			else{
 				if ( !this.getDeviceWriteLockObj().isHeldByCurrentThread()){
 					getDeviceWriteLockObj().lock();
+					Log.i(s_Tag_m, "<--------Lock count by Write Thread when LOCKING :" + this.getDeviceWriteLockObj().getHoldCount());
 				}
 				try{
 					synchronized(IController.queueObj_m){
 						if ( !IController.queueObj_m.isEmpty() ){
+							Log.i(s_Tag_m, "DEVICE THREAD QUEUE SIZE: " + IController.queueObj_m.size());
 							controlValuePacketObj_m = IController.queueObj_m.poll();
 						}
 					}				
@@ -62,8 +69,9 @@ public class DeviceWriteThread extends Thread {
 							if ( this.mapperPrototypeObj_m != null ){
 								//functionValue_m = this.mapperPrototypeObj_m.getFunctionValue(controlValuePacketObj_m.getiControllerPointer(), controlValuePacketObj_m.getSubControllerID());
 								functionValue_m = controlValuePacketObj_m.getI_FunctionValue();
+								channelNumber_m = controlValuePacketObj_m.getChannelVector();
 								Log.i(s_Tag_m, "Sub Controller ID Function value: " + functionValue_m + ", Value: " + f_Value_m);
-								midiOutputDeviceObj_m.fn_ControlChangeMessage(0, 0, functionValue_m, (int)f_Value_m);
+								midiOutputDeviceObj_m.fn_ControlChangeMessage(0, channelNumber_m, functionValue_m, (int)f_Value_m);
 								Log.i("WRITE TIME", String.valueOf((System.nanoTime() - previousTime)/1000000));
 								previousTime = System.nanoTime();
 								Log.i(s_Tag_m, "Queue Size:" + String.valueOf(IController.queueObj_m.size()));
@@ -78,14 +86,16 @@ public class DeviceWriteThread extends Thread {
 				}
 				finally{
 					if (IController.queueObj_m.isEmpty()){
-						this.getDeviceWriteLockObj().unlock();
+						if ( this.getDeviceWriteLockObj().isHeldByCurrentThread())
+							this.getDeviceWriteLockObj().unlock();
+						this.b_IsToBeSuspended_m = true;
 					}
 				}			
 				
 			}
 			try {
 				//Log.i(s_Tag_m, "END OF ITERATION");
-				Thread.sleep(1);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

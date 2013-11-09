@@ -2,33 +2,41 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="268" key="DIALOG_Y_ORIGIN"/>
-		<item value="1117" key="DIALOG_X_ORIGIN"/>
-		<item value="235" key="DIALOG_HEIGHT"/>
+		<item value="169" key="DIALOG_Y_ORIGIN"/>
+		<item value="376" key="DIALOG_HEIGHT"/>
+		<item value="87" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="fn_RegisterSeekBarListeners" key="selection"/>
+		<item value="SetProgress" key="selection"/>
 		<list key="findhistory">
-			<item value="fn_RegisterSeekBarListeners"/>
-			<item value="fn_LinearCalculation"/>
-			<item value="double"/>
-			<item value="X"/>
-			<item value="genericPointer_m"/>
-			<item value="mapper"/>
-			<item value="mapperObj_m"/>
-			<item value="continuousControllerVector_f"/>
+			<item value="setProgress"/>
+			<item value="deviceWriteThread_m"/>
+			<item value="fn_RegisterButtonClickListener"/>
+			<item value="fn_PopulateTextViews"/>
+			<item value="i_STFunctionValue_m"/>
+			<item value="onValueSelectionChanged"/>
+			<item value="xySettingsValueListener_m"/>
+			<item value="fn_RegisterListeners"/>
 		</list>
 		<list key="replacehistory">
-			<item value="Y"/>
+			<item value="match_parent"/>
+			<item value="3"/>
 			<item value=""/>
-			<item value="usbManagerObj_m"/>
-			<item value="usbManagerObj_f"/>
+			<item value="rectBounds_f"/>
+			<item value="selectedThumb_m"/>
+			<item value="Width"/>
+			<item value="width"/>
+			<item value="Min"/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="248" key="DIALOG_Y_ORIGIN"/>
+		<item value="452" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

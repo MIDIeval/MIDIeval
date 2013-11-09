@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@android:id/progress"
+        android:drawable="@drawable/button_generic_selector"/>
+    <item
+        android:id="@+id/imageX"
+        android:drawable="@drawable/y_bitmap"/>
+
+</layer-list>

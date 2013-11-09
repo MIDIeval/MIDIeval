@@ -9,22 +9,6 @@ package com.beta.activities;
 
 public final class R {
     public static final class attr {
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int framePicturePath=0x7f01000a;
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int gridPicturePath=0x7f01000b;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -32,15 +16,32 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_height=0x7f010000;
-        /** <p>Must be an integer value, such as "<code>100</code>".
+        public static final int decrement_button_background=0x7f010009;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layout_width=0x7f010001;
+        public static final int framePicturePath=0x7f01001a;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int gridPicturePath=0x7f01001b;
+        /**  Custom attributes for the Number picker 
+         <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int increment_button_background=0x7f010008;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -48,7 +49,74 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int multiTouch=0x7f010006;
+        public static final int is_selected_string_visble=0x7f01000f;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int layout_height=0x7f010010;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int layout_width=0x7f010011;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int min=0x7f010000;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int min_max_padding=0x7f010003;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int multiTouch=0x7f010016;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int next_text_background=0x7f01000c;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int number_picker_separator=0x7f01000e;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>horizontal</code></td><td>0</td><td></td></tr>
+<tr><td><code>vertical</code></td><td>1</td><td></td></tr>
+</table>
+         */
+        public static final int orientation_progressbar=0x7f010004;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -62,7 +130,7 @@ containing a value of this type.
 <tr><td><code>leftTop</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int origin=0x7f010007;
+        public static final int origin=0x7f010017;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -70,7 +138,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int originX=0x7f010008;
+        public static final int originX=0x7f010018;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -78,7 +146,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int originY=0x7f010009;
+        public static final int originY=0x7f010019;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -86,7 +154,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int xMax=0x7f010004;
+        public static final int previous_text_background=0x7f01000b;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -94,7 +162,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int xMin=0x7f010005;
+        public static final int progress_high=0x7f010002;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -102,7 +170,18 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int yMax=0x7f010002;
+        public static final int progress_low=0x7f010001;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>single</code></td><td>0</td><td></td></tr>
+<tr><td><code>dual</code></td><td>1</td><td></td></tr>
+</table>
+         */
+        public static final int progresstype_progressbar=0x7f010005;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -110,10 +189,71 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int yMin=0x7f010003;
+        public static final int selected_String_text_background=0x7f01000d;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selected_text_background=0x7f01000a;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int thumb_high=0x7f010007;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int thumb_low=0x7f010006;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int xMax=0x7f010014;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int xMin=0x7f010015;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int yMax=0x7f010012;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int yMin=0x7f010013;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
+ Default screen margins, per the Android Design guidelines. 
 
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
@@ -125,69 +265,183 @@ containing a value of this type.
     public static final class drawable {
         public static final int bgfader=0x7f020000;
         public static final int bgh=0x7f020001;
-        public static final int centre_bar=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int leader=0x7f020005;
-        public static final int left_end=0x7f020006;
-        public static final int leftithumb=0x7f020007;
-        public static final int leftthumb=0x7f020008;
-        public static final int right_end=0x7f020009;
-        public static final int rightithumb=0x7f02000a;
-        public static final int rightthumb=0x7f02000b;
-        public static final int seek_thumb_normal=0x7f02000c;
-        public static final int seek_thumb_pressed=0x7f02000d;
-        public static final int selector=0x7f02000e;
-        public static final int x_checked=0x7f02000f;
-        public static final int x_pressed=0x7f020010;
-        public static final int x_unchecked=0x7f020011;
+        public static final int button_decrement=0x7f020002;
+        public static final int button_decrement_np=0x7f020003;
+        public static final int button_decrement_presssed=0x7f020004;
+        public static final int button_decrement_presssed_np=0x7f020005;
+        public static final int button_decrement_selector=0x7f020006;
+        public static final int button_generic_selector=0x7f020007;
+        public static final int button_increment=0x7f020008;
+        public static final int button_increment_np=0x7f020009;
+        public static final int button_increment_pressed=0x7f02000a;
+        public static final int button_increment_pressed_np=0x7f02000b;
+        public static final int button_selector=0x7f02000c;
+        public static final int button_style_dt=0x7f02000d;
+        public static final int button_style_fling=0x7f02000e;
+        public static final int button_style_off=0x7f02000f;
+        public static final int button_style_on=0x7f020010;
+        public static final int button_style_press=0x7f020011;
+        public static final int button_style_press_02=0x7f020012;
+        public static final int button_style_st=0x7f020013;
+        public static final int button_style_x=0x7f020014;
+        public static final int button_style_y=0x7f020015;
+        public static final int centre_bar=0x7f020016;
+        public static final int checkbox=0x7f020017;
+        public static final int checkbox1_selector=0x7f020018;
+        public static final int checkbox2_selector=0x7f020019;
+        public static final int checkbox3_selector=0x7f02001a;
+        public static final int checkbox4_selector=0x7f02001b;
+        public static final int checkbox_checked_01=0x7f02001c;
+        public static final int checkbox_checked_02=0x7f02001d;
+        public static final int checkbox_checked_03=0x7f02001e;
+        public static final int checkbox_checked_04=0x7f02001f;
+        public static final int checkbox_unchecked=0x7f020020;
+        public static final int checkbox_unchecked_02=0x7f020021;
+        public static final int checkbox_unchecked_03=0x7f020022;
+        public static final int checkbox_unchecked_04=0x7f020023;
+        public static final int dt=0x7f020024;
+        public static final int dt_bitmap=0x7f020025;
+        public static final int fl=0x7f020026;
+        public static final int fling_bitmap=0x7f020027;
+        public static final int ic_launcher=0x7f020028;
+        public static final int icon=0x7f020029;
+        public static final int leader=0x7f02002a;
+        public static final int left_end=0x7f02002b;
+        public static final int leftithumb=0x7f02002c;
+        public static final int leftthumb=0x7f02002d;
+        public static final int next_item_background=0x7f02002e;
+        public static final int next_item_background_np=0x7f02002f;
+        public static final int np_selecteditem_background=0x7f020030;
+        public static final int np_selecteditem_background_np=0x7f020031;
+        public static final int previous_item_background=0x7f020032;
+        public static final int previous_item_background_np=0x7f020033;
+        public static final int right_end=0x7f020034;
+        public static final int rightithumb=0x7f020035;
+        public static final int rightthumb=0x7f020036;
+        public static final int seek_thumb_normal=0x7f020037;
+        public static final int seek_thumb_pressed=0x7f020038;
+        public static final int seekbar_background=0x7f020039;
+        public static final int seekbar_background_dual_foreground=0x7f02003a;
+        public static final int seekbar_background_dual_foreground_vertical=0x7f02003b;
+        public static final int seekbar_background_vertical=0x7f02003c;
+        public static final int seekbar_progress_9patch=0x7f02003d;
+        public static final int seekbar_progress_drawable=0x7f02003e;
+        public static final int seekbar_progress_dual_background=0x7f02003f;
+        public static final int seekbar_progress_dual_drawable=0x7f020040;
+        public static final int seekbar_progress_dual_foreground_vertical=0x7f020041;
+        public static final int seekbar_progress_dual_vertical_drawable=0x7f020042;
+        public static final int seekbar_progress_vertical=0x7f020043;
+        public static final int seekbar_progress_vertical_drawable=0x7f020044;
+        public static final int seekbar_thumb=0x7f020045;
+        public static final int seekbar_thumb_vertical=0x7f020046;
+        public static final int selector=0x7f020047;
+        public static final int splitter=0x7f020048;
+        public static final int st=0x7f020049;
+        public static final int st_bitmap=0x7f02004a;
+        public static final int tab_dt_selected=0x7f02004b;
+        public static final int tab_dt_selector=0x7f02004c;
+        public static final int tab_dt_unselected=0x7f02004d;
+        public static final int tab_fl_selected=0x7f02004e;
+        public static final int tab_fl_selector=0x7f02004f;
+        public static final int tab_fl_unselected=0x7f020050;
+        public static final int tab_st_selected=0x7f020051;
+        public static final int tab_st_selector=0x7f020052;
+        public static final int tab_st_unselected=0x7f020053;
+        public static final int tab_x=0x7f020054;
+        public static final int tab_x_selected=0x7f020055;
+        public static final int tab_x_selector=0x7f020056;
+        public static final int tab_xy_selected=0x7f020057;
+        public static final int tab_xy_unselected=0x7f020058;
+        public static final int tab_y_selector=0x7f020059;
+        public static final int text_display_selection=0x7f02005a;
+        public static final int text_display_selection_np=0x7f02005b;
+        public static final int x=0x7f02005c;
+        public static final int x_bitmap=0x7f02005d;
+        public static final int x_checked=0x7f02005e;
+        public static final int x_pressed=0x7f02005f;
+        public static final int x_unchecked=0x7f020060;
+        public static final int y=0x7f020061;
+        public static final int y_bitmap=0x7f020062;
     }
     public static final class id {
-        public static final int action_settings=0x7f050025;
-        public static final int center=0x7f050000;
-        public static final int check_box_01=0x7f050021;
-        public static final int check_box_02=0x7f050022;
-        public static final int check_box_03=0x7f050023;
-        public static final int check_box_04=0x7f050024;
-        public static final int leftBottom=0x7f050001;
-        public static final int leftTop=0x7f050004;
-        public static final int linerLayout_01=0x7f050020;
-        public static final int numberPicker1=0x7f05001a;
-        public static final int rightBottom=0x7f050002;
-        public static final int rightTop=0x7f050003;
-        public static final int seekBar_01=0x7f050015;
-        public static final int switch_01=0x7f050009;
-        public static final int switch_02=0x7f05000d;
-        public static final int switch_03=0x7f050011;
-        public static final int switch_04=0x7f050014;
-        public static final int table_layout_01=0x7f050017;
-        public static final int table_row_01=0x7f050018;
-        public static final int table_row_02=0x7f05001c;
-        public static final int table_row_03=0x7f05001e;
-        public static final int text_01=0x7f05000b;
-        public static final int text_02=0x7f05000f;
-        public static final int text_03=0x7f050012;
-        public static final int text_View_01=0x7f05001d;
-        public static final int toggle_Button_1=0x7f050019;
-        public static final int toggle_Button_2=0x7f05001b;
-        public static final int toggle_Button_3=0x7f05001f;
-        public static final int windowedseekbar_01=0x7f05000a;
-        public static final int windowedseekbar_02=0x7f05000e;
-        public static final int xy_controller=0x7f050006;
-        public static final int xy_controller_fragment=0x7f050005;
-        public static final int xy_settingRow_01=0x7f050008;
-        public static final int xy_settingRow_02=0x7f05000c;
-        public static final int xy_settingRow_03=0x7f050010;
-        public static final int xy_settingRow_04=0x7f050013;
-        public static final int xy_settings=0x7f050016;
-        public static final int xy_settingtable=0x7f050007;
+        public static final int action_settings=0x7f05003c;
+        public static final int btn_decrement=0x7f050012;
+        public static final int btn_increment=0x7f050014;
+        public static final int button_DT=0x7f05002b;
+        public static final int button_ST=0x7f05002c;
+        public static final int button_X=0x7f050029;
+        public static final int button_Y=0x7f05002a;
+        public static final int button_array=0x7f050028;
+        public static final int button_fl=0x7f05002d;
+        public static final int center=0x7f050004;
+        public static final int channel_text=0x7f050033;
+        public static final int checkBox_Channel_01=0x7f050035;
+        public static final int checkBox_Channel_02=0x7f050036;
+        public static final int checkBox_Channel_03=0x7f050037;
+        public static final int checkBox_Channel_04=0x7f050038;
+        public static final int checkBox_linearLayout=0x7f050034;
+        public static final int dual=0x7f050003;
+        public static final int function_value_picker=0x7f050031;
+        public static final int horizontal=0x7f050000;
+        public static final int imageX=0x7f05003a;
+        public static final int image_row_04=0x7f050010;
+        public static final int image_row_05=0x7f050017;
+        public static final int leftBottom=0x7f050005;
+        public static final int leftTop=0x7f050008;
+        public static final int progress_high=0x7f05003b;
+        public static final int range_seek=0x7f050032;
+        public static final int range_seek_threshold=0x7f050039;
+        public static final int rightBottom=0x7f050006;
+        public static final int rightTop=0x7f050007;
+        public static final int single=0x7f050002;
+        public static final int space_row_01=0x7f05000c;
+        public static final int space_row_03=0x7f050019;
+        public static final int space_row_04=0x7f05000d;
+        public static final int space_row_05=0x7f050016;
+        public static final int space_row_06=0x7f05001c;
+        public static final int tabButton=0x7f05001e;
+        public static final int tabX=0x7f050027;
+        public static final int tab_01=0x7f050020;
+        public static final int tab_02=0x7f050021;
+        public static final int tab_03=0x7f050022;
+        public static final int tab_04=0x7f050023;
+        public static final int tab_05=0x7f050024;
+        public static final int tab_1=0x7f050025;
+        public static final int tab_2=0x7f050026;
+        public static final int tab_group=0x7f05001f;
+        public static final int table_layout_settings=0x7f05000a;
+        public static final int table_row_01=0x7f05000b;
+        public static final int table_row_02=0x7f050011;
+        public static final int table_row_03=0x7f050018;
+        public static final int table_row_04=0x7f05000f;
+        public static final int table_row_05=0x7f050015;
+        public static final int table_row_06=0x7f05001b;
+        public static final int text_row_01=0x7f05000e;
+        public static final int text_row_02=0x7f050013;
+        public static final int text_row_03=0x7f05001a;
+        public static final int text_row_06=0x7f05001d;
+        public static final int vertical=0x7f050001;
+        public static final int xy_controller=0x7f05002f;
+        public static final int xy_controller_container=0x7f05002e;
+        public static final int xy_controller_fragment=0x7f050009;
+        public static final int xy_settings_fragment=0x7f050030;
     }
     public static final class layout {
         public static final int activity_launcher=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_master_layout=0x7f030002;
-        public static final int xy_fragment=0x7f030003;
-        public static final int xy_settings=0x7f030004;
+        public static final int spinner_layout=0x7f030003;
+        public static final int tab=0x7f030004;
+        public static final int tab_beta=0x7f030005;
+        public static final int tab_host=0x7f030006;
+        public static final int tabdoubletap=0x7f030007;
+        public static final int tabs_fragment=0x7f030008;
+        public static final int tabswing=0x7f030009;
+        public static final int tabx=0x7f03000a;
+        public static final int taby=0x7f03000b;
+        public static final int xy_fragment=0x7f03000c;
+        public static final int xy_settings_cc=0x7f03000d;
+        public static final int xy_settings_d=0x7f03000e;
     }
     public static final class menu {
         public static final int launcher=0x7f090000;
@@ -195,15 +449,35 @@ containing a value of this type.
         public static final int master_layout=0x7f090002;
     }
     public static final class string {
-        public static final int SELECTOR_DIALOG_BUNDLE_NAME=0x7f070003;
+        public static final int SELECTOR_DIALOG_BUNDLE_NAME=0x7f070004;
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
-        public static final int hello_world=0x7f070005;
-        public static final int title_activity_launcher=0x7f070002;
-        public static final int title_activity_master_layout=0x7f070004;
+        public static final int hello_world=0x7f070002;
+        public static final int title_activity_launcher=0x7f070003;
+        public static final int title_activity_master_layout=0x7f070005;
     }
     public static final class style {
         /** 
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
+
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    
+ API 11 theme customizations can go here. 
+
+        Base application theme for API 14+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 14+ devices.
+    
+ API 14 theme customizations can go here. 
+
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     
@@ -227,17 +501,438 @@ containing a value of this type.
         public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
+ Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int CProgressBarStyle=0x7f080002;
         /**  Button syle for the activity 
          */
-        public static final int action_button_style=0x7f080002;
+        public static final int action_button_style=0x7f080003;
     }
     public static final class xml {
         public static final int device_filter=0x7f040000;
         public static final int maudio_venom=0x7f040001;
     }
     public static final class styleable {
+        /** Attributes that can be used with a CLinearSeekBar.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CLinearSeekBar_android_disabledAlpha android:disabledAlpha}</code></td><td></td></tr>
+           <tr><td><code>{@link #CLinearSeekBar_android_thumb android:thumb}</code></td><td></td></tr>
+           <tr><td><code>{@link #CLinearSeekBar_android_thumbOffset android:thumbOffset}</code></td><td></td></tr>
+           <tr><td><code>{@link #CLinearSeekBar_thumb_high com.beta.activities:thumb_high}</code></td><td></td></tr>
+           <tr><td><code>{@link #CLinearSeekBar_thumb_low com.beta.activities:thumb_low}</code></td><td></td></tr>
+           </table>
+           @see #CLinearSeekBar_android_disabledAlpha
+           @see #CLinearSeekBar_android_thumb
+           @see #CLinearSeekBar_android_thumbOffset
+           @see #CLinearSeekBar_thumb_high
+           @see #CLinearSeekBar_thumb_low
+         */
+        public static final int[] CLinearSeekBar = {
+            0x01010033, 0x01010142, 0x01010143, 0x7f010006,
+            0x7f010007
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#disabledAlpha}
+          attribute's value can be found in the {@link #CLinearSeekBar} array.
+          @attr name android:disabledAlpha
+        */
+        public static final int CLinearSeekBar_android_disabledAlpha = 0;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#thumb}
+          attribute's value can be found in the {@link #CLinearSeekBar} array.
+          @attr name android:thumb
+        */
+        public static final int CLinearSeekBar_android_thumb = 1;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#thumbOffset}
+          attribute's value can be found in the {@link #CLinearSeekBar} array.
+          @attr name android:thumbOffset
+        */
+        public static final int CLinearSeekBar_android_thumbOffset = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#thumb_high}
+          attribute's value can be found in the {@link #CLinearSeekBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:thumb_high
+        */
+        public static final int CLinearSeekBar_thumb_high = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#thumb_low}
+          attribute's value can be found in the {@link #CLinearSeekBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:thumb_low
+        */
+        public static final int CLinearSeekBar_thumb_low = 3;
+        /** Attributes that can be used with a CNumberPicker.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CNumberPicker_android_maxHeight android:maxHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_android_maxWidth android:maxWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_android_minHeight android:minHeight}</code></td><td> Android specific attributes for the Number Picker </td></tr>
+           <tr><td><code>{@link #CNumberPicker_android_minWidth android:minWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_decrement_button_background com.beta.activities:decrement_button_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_increment_button_background com.beta.activities:increment_button_background}</code></td><td> Custom attributes for the Number picker </td></tr>
+           <tr><td><code>{@link #CNumberPicker_is_selected_string_visble com.beta.activities:is_selected_string_visble}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_next_text_background com.beta.activities:next_text_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_number_picker_separator com.beta.activities:number_picker_separator}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_previous_text_background com.beta.activities:previous_text_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_selected_String_text_background com.beta.activities:selected_String_text_background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CNumberPicker_selected_text_background com.beta.activities:selected_text_background}</code></td><td></td></tr>
+           </table>
+           @see #CNumberPicker_android_maxHeight
+           @see #CNumberPicker_android_maxWidth
+           @see #CNumberPicker_android_minHeight
+           @see #CNumberPicker_android_minWidth
+           @see #CNumberPicker_decrement_button_background
+           @see #CNumberPicker_increment_button_background
+           @see #CNumberPicker_is_selected_string_visble
+           @see #CNumberPicker_next_text_background
+           @see #CNumberPicker_number_picker_separator
+           @see #CNumberPicker_previous_text_background
+           @see #CNumberPicker_selected_String_text_background
+           @see #CNumberPicker_selected_text_background
+         */
+        public static final int[] CNumberPicker = {
+            0x0101011f, 0x01010120, 0x0101013f, 0x01010140,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#maxHeight}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+          @attr name android:maxHeight
+        */
+        public static final int CNumberPicker_android_maxHeight = 1;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#maxWidth}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+          @attr name android:maxWidth
+        */
+        public static final int CNumberPicker_android_maxWidth = 0;
+        /**
+          <p>
+          @attr description
+           Android specific attributes for the Number Picker 
+          <p>This corresponds to the global attribute
+          resource symbol {@link android.R.attr#minHeight}.
+          @attr name android:minHeight
+        */
+        public static final int CNumberPicker_android_minHeight = 3;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#minWidth}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+          @attr name android:minWidth
+        */
+        public static final int CNumberPicker_android_minWidth = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#decrement_button_background}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:decrement_button_background
+        */
+        public static final int CNumberPicker_decrement_button_background = 5;
+        /**
+          <p>
+          @attr description
+           Custom attributes for the Number picker 
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.beta.activities:increment_button_background
+        */
+        public static final int CNumberPicker_increment_button_background = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#is_selected_string_visble}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:is_selected_string_visble
+        */
+        public static final int CNumberPicker_is_selected_string_visble = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#next_text_background}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:next_text_background
+        */
+        public static final int CNumberPicker_next_text_background = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#number_picker_separator}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:number_picker_separator
+        */
+        public static final int CNumberPicker_number_picker_separator = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#previous_text_background}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:previous_text_background
+        */
+        public static final int CNumberPicker_previous_text_background = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#selected_String_text_background}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:selected_String_text_background
+        */
+        public static final int CNumberPicker_selected_String_text_background = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#selected_text_background}
+          attribute's value can be found in the {@link #CNumberPicker} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:selected_text_background
+        */
+        public static final int CNumberPicker_selected_text_background = 6;
+        /** Attributes that can be used with a CProgressBar.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CProgressBar_android_max android:max}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_maxHeight android:maxHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_maxWidth android:maxWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_minHeight android:minHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_minWidth android:minWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_progress android:progress}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_android_progressDrawable android:progressDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_min com.beta.activities:min}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_min_max_padding com.beta.activities:min_max_padding}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_orientation_progressbar com.beta.activities:orientation_progressbar}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_progress_high com.beta.activities:progress_high}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_progress_low com.beta.activities:progress_low}</code></td><td></td></tr>
+           <tr><td><code>{@link #CProgressBar_progresstype_progressbar com.beta.activities:progresstype_progressbar}</code></td><td></td></tr>
+           </table>
+           @see #CProgressBar_android_max
+           @see #CProgressBar_android_maxHeight
+           @see #CProgressBar_android_maxWidth
+           @see #CProgressBar_android_minHeight
+           @see #CProgressBar_android_minWidth
+           @see #CProgressBar_android_progress
+           @see #CProgressBar_android_progressDrawable
+           @see #CProgressBar_min
+           @see #CProgressBar_min_max_padding
+           @see #CProgressBar_orientation_progressbar
+           @see #CProgressBar_progress_high
+           @see #CProgressBar_progress_low
+           @see #CProgressBar_progresstype_progressbar
+         */
+        public static final int[] CProgressBar = {
+            0x0101011f, 0x01010120, 0x01010136, 0x01010137,
+            0x0101013c, 0x0101013f, 0x01010140, 0x7f010000,
+            0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004,
+            0x7f010005
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#max}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:max
+        */
+        public static final int CProgressBar_android_max = 2;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#maxHeight}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:maxHeight
+        */
+        public static final int CProgressBar_android_maxHeight = 1;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#maxWidth}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:maxWidth
+        */
+        public static final int CProgressBar_android_maxWidth = 0;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#minHeight}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:minHeight
+        */
+        public static final int CProgressBar_android_minHeight = 6;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#minWidth}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:minWidth
+        */
+        public static final int CProgressBar_android_minWidth = 5;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#progress}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:progress
+        */
+        public static final int CProgressBar_android_progress = 3;
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#progressDrawable}
+          attribute's value can be found in the {@link #CProgressBar} array.
+          @attr name android:progressDrawable
+        */
+        public static final int CProgressBar_android_progressDrawable = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#min}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:min
+        */
+        public static final int CProgressBar_min = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#min_max_padding}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:min_max_padding
+        */
+        public static final int CProgressBar_min_max_padding = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#orientation_progressbar}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>horizontal</code></td><td>0</td><td></td></tr>
+<tr><td><code>vertical</code></td><td>1</td><td></td></tr>
+</table>
+          @attr name com.beta.activities:orientation_progressbar
+        */
+        public static final int CProgressBar_orientation_progressbar = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#progress_high}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:progress_high
+        */
+        public static final int CProgressBar_progress_high = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#progress_low}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.beta.activities:progress_low
+        */
+        public static final int CProgressBar_progress_low = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.beta.activities.R.attr#progresstype_progressbar}
+          attribute's value can be found in the {@link #CProgressBar} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>single</code></td><td>0</td><td></td></tr>
+<tr><td><code>dual</code></td><td>1</td><td></td></tr>
+</table>
+          @attr name com.beta.activities:progresstype_progressbar
+        */
+        public static final int CProgressBar_progresstype_progressbar = 12;
         /** Attributes that can be used with a XYController.
            <p>Includes the following attributes:</p>
            <table>
@@ -271,9 +966,9 @@ containing a value of this type.
            @see #XYController_yMin
          */
         public static final int[] XYController = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b
+            0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013,
+            0x7f010014, 0x7f010015, 0x7f010016, 0x7f010017,
+            0x7f010018, 0x7f010019, 0x7f01001a, 0x7f01001b
         };
         /**
           <p>This symbol is the offset where the {@link com.beta.activities.R.attr#framePicturePath}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"> 
+    <!-- Currently pressed -->
+    <item android:state_pressed="true" android:drawable="@drawable/button_increment_pressed_np" />
+     <!-- Default CHECKED state of the toggle -->
+    <item android:state_pressed="false" android:drawable="@drawable/button_increment_np" />
+ </selector>

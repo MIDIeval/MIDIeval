@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ import com.beta.util.UsbDeviceDetails;
 import com.beta.util.UsbMIDIDeviceUtil;
 import com.beta.xmlUtility.Mapper;
 
-public abstract class AbstractSingleMIDIActivity extends Activity implements
+public abstract class AbstractSingleMIDIActivity extends FragmentActivity implements
 		OnMidiInputEventListener, OnMIDIDeviceAttachedListener,
 		OnMIDIDeviceDetachedListener, IQueueWatcherListener, ISelectorDialogInvoker {
 	
@@ -105,9 +106,8 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 	@Override
 	public void onDetachedDevice(UsbDevice usbDevice){
 		IController.queueObj_m.clear();
-		queueWatcherTimerTaskObj_m.cancel();
 		queueWatcherTimerTaskObj_m.fn_StopTimer();
-		
+		queueWatcherTimerTaskObj_m = null;
 		deviceWriteThread_m.setIsToBeSuspended(true);
 		deviceWriteThread_m = null;
 		System.gc();
@@ -128,7 +128,7 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 			usbMIDIDeviceDetails_m.setProduct(rawDeviceDetails_f.get("Product"));
 		}
 		
-		this.deviceWriteThread_m = new DeviceWriteThread();
+		this.deviceWriteThread_m = new DeviceWriteThread(); 
 		this.deviceWriteThread_m.setMapperPrototype(this.getMapper());
 		this.deviceWriteThread_m.setMidiOutputDevice(midiOutputDeviceObj_m);
 		this.deviceWriteThread_m.setIsToBeSuspended(true);
@@ -270,15 +270,32 @@ public abstract class AbstractSingleMIDIActivity extends Activity implements
 	}
 	@Override
 	public void fn_QueueIsNowFilling(){
-		this.deviceWriteThread_m.setIsToBeSuspended(false);
+		//Log.i("ACTIVITY THREAD", "<--------------QUEUE IS NOW FILLING -------------->");
+		if ( this.deviceWriteThread_m.getIsToBeSuspended()){
+				
+			if ( !this.deviceWriteThread_m.getDeviceWriteLockObj().isHeldByCurrentThread())
+				this.deviceWriteThread_m.getDeviceWriteLockObj().lock();
+			//Log.i("ACTIVITY THREAD", "<--------Lock count by Activity when LOCKING :" + this.deviceWriteThread_m.getDeviceWriteLockObj().getHoldCount());
+			
+			
+			this.deviceWriteThread_m.setIsToBeSuspended(false);
+			try{			
+				this.deviceWriteThread_m.getQueueNotFullCondition().signal();
+			}
+			finally{			
+				if ( this.deviceWriteThread_m != null ){
+					if ( this.deviceWriteThread_m.getDeviceWriteLockObj().isHeldByCurrentThread())
+						this.deviceWriteThread_m.getDeviceWriteLockObj().unlock();
+					Log.i("ACTIVITY THREAD", "<--------Lock count by Activity when UN-LOCKING :" + this.deviceWriteThread_m.getDeviceWriteLockObj().getHoldCount());
+					
+				}
+			}
+		}
+		else{
+			//Log.i("ACTIVITY THREAD", "<---------DEVICE THREAD IS ALREADY RUNNING, EXIT------->");
+		}
 		
-		this.deviceWriteThread_m.getDeviceWriteLockObj().lock();
-		try{
-			this.deviceWriteThread_m.getQueueNotFullCondition().signal();
-		}
-		finally{
-			this.deviceWriteThread_m.getDeviceWriteLockObj().unlock();
-		}
+		
 	}
 
 	/**

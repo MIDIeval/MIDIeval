@@ -1,8 +1,8 @@
 package com.beta.Controllability;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 
 /*Interface: IController
@@ -12,7 +12,7 @@ import java.util.Queue;
  */
 public interface IController {
 	//Members
-	static final Queue<ControlValuePacket> queueObj_m = new LinkedList<ControlValuePacket>();
+	static final ArrayBlockingQueue<ControlValuePacket> queueObj_m = new ArrayBlockingQueue<ControlValuePacket>(500);
 	Object lockObject_m = new Object();
 	
 	//Normalizing function to convert native controller value to a range [-1, 1]

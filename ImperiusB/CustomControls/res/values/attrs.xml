@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <declare-styleable name="CProgressBar">
+        <attr name="min" format="integer" />
+        <attr name="progress_low" format="integer" />
+        <attr name="progress_high" format="integer" />
+        <attr name="min_max_padding" format="integer" />
+    	<attr name="orientation_progressbar" format="enum">       
+	        <enum name="horizontal" value = "0"/>
+         	<enum name="vertical" value = "1"/>
+    	</attr>
+    	<attr name= "progresstype_progressbar" format="enum" >
+	        <enum name="single" value = "0" />
+        	<enum name="dual" value = "1" />        	
+    	</attr>
+    	<attr name="android:progressDrawable" />
+    	<attr name="android:minWidth" />
+    	<attr name="android:maxWidth" />
+    	<attr name="android:minHeight" />
+    	<attr name="android:maxHeight" />
+    	<attr name="android:progress" />
+    	<attr name="android:max" />  
+    	    
+	</declare-styleable>
+    <declare-styleable name="CLinearSeekBar">
+        <attr name="android:thumb"/>
+        <attr name="thumb_low" format="integer" />
+        <attr name="thumb_high" format="integer" />
+        <attr name="android:thumbOffset"/>
+        <attr name="android:disabledAlpha"/>
+    </declare-styleable>
+    
+    <declare-styleable name="CNumberPicker">
+        <!-- Custom attributes for the Number picker -->
+  		<attr name="increment_button_background" format="integer" /> 
+  		<attr name="decrement_button_background" format="integer" /> 
+  		<attr name="selected_text_background" format="integer" /> 
+  		<attr name="previous_text_background" format="integer"/>
+  		<attr name="next_text_background" format="integer" />
+  		<attr name="selected_String_text_background" format="integer" />
+  		<attr name="number_picker_separator" format="integer" />
+  		<attr name="is_selected_string_visble" format="boolean" />
+  		    
+  		    
+  		<!-- Android specific attributes for the Number Picker -->
+  		<attr name="android:minHeight" />
+  		<attr name="android:minWidth" />
+  		<attr name="android:maxHeight"/>
+  		<attr name="android:maxWidth" /> 		 
+    </declare-styleable>
+    
+</resources>

@@ -6,7 +6,7 @@ public class ControlValuePacket {
 	private int i_SubControllerID_m;
 	private float f_ValueVector_m;
 	private int i_FunctionValue_m;
-	
+	private int i_ChannelVector_m = 0;
 	public ControlValuePacket(float valueVector){
 		this.f_ValueVector_m = valueVector;
 	}
@@ -106,6 +106,20 @@ public class ControlValuePacket {
 	 */
 	public void setI_FunctionValue(int i_FunctionValue_m) {
 		this.i_FunctionValue_m = i_FunctionValue_m;
+	}
+
+
+
+
+	public int getChannelVector() {
+		return i_ChannelVector_m;
+	}
+
+
+
+
+	public void setChannelVector(int i_ChannelVector_m) {
+		this.i_ChannelVector_m = i_ChannelVector_m;
 	}
 
 }

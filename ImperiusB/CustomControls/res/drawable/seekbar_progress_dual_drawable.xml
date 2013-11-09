@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id ="@android:id/background">
+        <nine-patch 
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:src="@drawable/seekbar_progress_dual_background"
+            android:dither="true"/>       
+    </item>
+    <item 
+        android:id="@android:id/progress"
+        android:drawable="@drawable/seekbar_background_dual_foreground"
+    />      
+     <item 
+        android:id="@+id/progress_high"
+        android:drawable="@drawable/seekbar_background_dual_foreground"
+    />        
+</layer-list>
+

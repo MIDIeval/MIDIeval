@@ -1,26 +1,46 @@
 package com.beta.UIControls;
 
 public class XYCurrentSettingDetails {
-	private int[] channelsVector_m = new int[]{-1, -1, -1, -1};
-	private int i_XFunctionValue_m = -1;
-	private int i_YFunctionValue_m = -1;
+	private int[] xChannelsVector_m = new int[]{0};
+	private int[] yChannelsVector_m = new int[]{0};
+	private int i_XFunctionValue_m = 0;
+	private int i_YFunctionValue_m = 0;
 	private int i_DTFunctionValue_m = -1;
 	private int i_STFunctionValue_m = -1;
-	private boolean b_IsFlingOn_m = false;
-	private int[] xRangeVector_m = new int[]{0, 50};//XMin, XMax, YMin, YMax
-	private int[] yRangeVector_m = new int[]{0, 50};
-	private int i_FlingSpeed_m = -1;
+	private int i_SingleTapThreshold_m = 64;
+	private int i_DoubleTapThreshold_m = 64;
+	
+	public boolean b_IsXOn_m = true;
+	public boolean b_IsYOn_m = true;
+	public boolean b_IsDTOn_m = false;
+	public boolean b_IsSTOn_m = false;
+	public boolean b_IsFlingOn_m = false;
+	private int[] xRangeVector_m = new int[]{25, 75};//XMin, XMax, YMin, YMax
+	private int[] yRangeVector_m = new int[]{25, 75};
+	private int i_FlingSpeed_m = 10;
 	/**
 	 * @return the channelsVector_m
 	 */
-	public int[] getChannelsVector() {
-		return channelsVector_m;
+	public int[] getXChannelsVector() {
+		return xChannelsVector_m;
 	}
 	/**
 	 * @param channelsVector_m the channelsVector_m to set
 	 */
-	public void setChannelsVector(int[] channelsVector_m) {
-		this.channelsVector_m = channelsVector_m;
+	public void setXChannelsVector(int[] channelsVector_m) {
+		this.xChannelsVector_m = channelsVector_m;
+	}
+	/**
+	 * @return the channelsVector_m
+	 */
+	public int[] getYChannelsVector() {
+		return yChannelsVector_m;
+	}
+	/**
+	 * @param channelsVector_m the channelsVector_m to set
+	 */
+	public void setYChannelsVector(int[] channelsVector_m) {
+		this.yChannelsVector_m = channelsVector_m;
 	}
 	/**
 	 * @return the i_XFunctionValue_m
@@ -117,5 +137,17 @@ public class XYCurrentSettingDetails {
 	 */
 	public void setI_FlingSpeed(int i_FlingSpeed_m) {
 		this.i_FlingSpeed_m = i_FlingSpeed_m;
+	}
+	public int getSingleTapThreshold() {
+		return i_SingleTapThreshold_m;
+	}
+	public void setSingleTapThreshold(int i_SingleTapThreshold_m) {
+		this.i_SingleTapThreshold_m = i_SingleTapThreshold_m;
+	}
+	public int getDoubleTapThreshold() {
+		return i_DoubleTapThreshold_m;
+	}
+	public void setDoubleTapThreshold(int i_DoubleTapThreshold_m) {
+		this.i_DoubleTapThreshold_m = i_DoubleTapThreshold_m;
 	}
 }

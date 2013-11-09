@@ -26,12 +26,14 @@ import com.beta.xmlUtility.Mapper;
 public class MainActivity extends AbstractSingleMIDIActivity{
 	
 	
-	public WindowedSeekBar seekBarX;
-	public WindowedSeekBar seekBarY;
+//	public WindowedSeekBar seekBarX;
+//	public WindowedSeekBar seekBarY;
 	
 	TextView text_X;
 	TextView text_Y;
 	TextView text_DoubleTap;
+	 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

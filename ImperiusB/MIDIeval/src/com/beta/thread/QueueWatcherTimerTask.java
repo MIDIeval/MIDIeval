@@ -15,7 +15,7 @@ public class QueueWatcherTimerTask extends TimerTask{
 	private static QueueWatcherTimerTask timerTaskInstance_m;
 	private IQueueWatcherListener queueWatcherListenerRef_m;
 	private static Timer timerObj_m;
-	private final int TIMER_DELAY = 20;//in ms
+	private final int TIMER_DELAY = 10;//in ms
 	private final static  String s_Tag_m = "QUEUE_WATCHER_TIMER_TASK";
 	public static Object lockObject_m = new Object();
 	@Override
@@ -86,6 +86,8 @@ public class QueueWatcherTimerTask extends TimerTask{
 	public void fn_StopTimer(){
 		QueueWatcherTimerTask.timerObj_m.cancel();
 		QueueWatcherTimerTask.timerObj_m.purge();
+		timerTaskInstance_m = null;
+		this.timerObj_m = null;
 		
 	}
 }

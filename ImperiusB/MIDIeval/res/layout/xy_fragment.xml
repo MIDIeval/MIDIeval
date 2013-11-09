@@ -4,133 +4,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.beta.UIControls.XYController
-        android:id="@+id/xy_controller"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-	
-    <TableLayout
-        android:id="@+id/xy_settingtable"
+    <LinearLayout
+        android:id="@+id/button_array"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/xy_controller" >
+        android:layout_height="wrap_content" >
 
-        <TableRow
-            android:id="@+id/xy_settingRow_01"
-            android:layout_width="match_parent"
+        <ToggleButton
+            android:id="@+id/button_X"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="5dp" >
+            android:layout_weight="1"
+            android:background="@drawable/button_style_x"
+            android:padding="5dp"
+            android:textOff=""
+            android:textOn="" />
 
-            <ToggleButton
-                android:id="@+id/switch_01"                
-                android:padding="5dp"
-                android:background="@drawable/selector"
-                style="@style/action_button_style"/>
-
-            <com.beta.UIControls.WindowedSeekBar
-                android:id="@+id/windowedseekbar_01"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/bgh"
-                android:layout_weight="2.5"
-                 android:padding="10dp" >
-            </com.beta.UIControls.WindowedSeekBar>
-
-            <TextView
-                android:id="@+id/text_01"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="none"
-                android:paddingLeft="5dp" />
-        </TableRow>
-        
-        <TableRow
-            android:id="@+id/xy_settingRow_02"
-            android:layout_width="match_parent"
+        <ToggleButton
+            android:id="@+id/button_Y"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="5dp" >
+            android:layout_weight="1"
+            android:background="@drawable/button_style_y"
+            android:padding="5dp"
+            android:textOff=""
+            android:textOn="" />
 
-            <Switch
-                android:id="@+id/switch_02"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Y-Var"
-                android:padding="5dp" />
-
-            <com.beta.UIControls.WindowedSeekBar
-                android:id="@+id/windowedseekbar_02"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/bgh"
-                android:layout_weight="2.5"
-                android:padding="10dp" >
-            </com.beta.UIControls.WindowedSeekBar>
-
-            <TextView
-                android:id="@+id/text_02"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="none" 
-                android:paddingLeft="5dp"/>
-        </TableRow>
-        <TableRow
-            android:id="@+id/xy_settingRow_03"
-            android:layout_width="match_parent"
+        <ToggleButton
+            android:id="@+id/button_DT"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="5dp" >
+            android:layout_weight="1"
+            android:background="@drawable/button_style_dt"
+            android:padding="5dp"
+            android:textOff=""
+            android:textOn="" />
 
-            <Switch
-                android:id="@+id/switch_03"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Double tap"
-                android:padding="5dp" />
-            <Space
-                android:layout_weight="2.5"/>
-             <TextView
-                android:id="@+id/text_03"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="none" 
-                android:paddingLeft="5dp"/>
-        </TableRow>
-        <TableRow
-            android:id="@+id/xy_settingRow_04"
-            android:layout_width="match_parent"
+        <ToggleButton
+            android:id="@+id/button_ST"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="5dp" >
+            android:layout_weight="1"
+            android:background="@drawable/button_style_st"
+            android:padding="5dp"
+            android:textOff=""
+            android:textOn="" />
 
-            <Switch
-                android:id="@+id/switch_04"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Double tap"
-                android:padding="5dp" />
-            <SeekBar
-                android:id="@+id/seekBar_01"
-                android:layout_weight="2.5"/>
-             <TextView
-                android:id="@+id/text_03"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="none" 
-                android:paddingLeft="5dp"/>
-        </TableRow>
-    </TableLayout>
-      <com.beta.UIControls.XYSettings 
-        android:id="@+id/xy_settings"
+        <ToggleButton
+            android:id="@+id/button_fl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_style_fling"
+            android:padding="5dp"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/xy_controller_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" 
-    />
- 
-       
+        android:layout_below="@id/button_array" >
+
+        <com.beta.UIControls.XYController
+            android:id="@+id/xy_controller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/xy_settings_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xy_controller_container"
+        class="com.beta.UIControls.XYTabsFragment" />
+
 </RelativeLayout>
