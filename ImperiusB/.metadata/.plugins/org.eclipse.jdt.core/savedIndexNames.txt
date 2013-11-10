@@ -1,10 +1,7 @@
 INDEX VERSION 1.126+C:\Users\Iseberg\Documents\GitHub\MIDIeval\ImperiusB\.metadata\.plugins\org.eclipse.jdt.core
 4171805251.index
-3914895966.index
 2740731635.index
 3821844359.index
-1645036903.index
-828377289.index
 1894394359.index
 4005648673.index
 3054747736.index
@@ -14,9 +11,7 @@ INDEX VERSION 1.126+C:\Users\Iseberg\Documents\GitHub\MIDIeval\ImperiusB\.metada
 38715123.index
 3096820414.index
 1453959103.index
-1531412002.index
 624847814.index
-1031703706.index
 3022542686.index
 3399691855.index
 2950469184.index

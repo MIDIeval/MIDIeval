@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=Imperius/src&lt;com.beta.listener{OnMidiInputEventListener.java[OnMidiInputEventListener" modifiers="513" timestamp="1359192531076"/>
-<typeInfo handle="=Imperius/src&lt;com.beta.listener{OnMIDIDeviceAttachedListener.java[OnMIDIDeviceAttachedListener" modifiers="513" timestamp="1377183742836"/>
-<typeInfo handle="=Imperius/src&lt;com.beta.listener{OnMIDIDeviceDetachedListener.java[OnMIDIDeviceDetachedListener" modifiers="513" timestamp="1377183701320"/>
 <typeInfo handle="=MIDIeval/C:\/Users\/Iseberg\/Downloads\/adt-bundle-windows-x86_64-20130729\/adt-bundle-windows-x86_64-20130729\/sdk\/platforms\/android-18\/android.jar&lt;android.view(ViewGroup.class[ViewGroup" modifiers="1057" timestamp="1373463338000"/>
 <typeInfo handle="=CustomControls/C:\/Users\/Iseberg\/Downloads\/adt-bundle-windows-x86_64-20130729\/adt-bundle-windows-x86_64-20130729\/sdk\/platforms\/android-18\/android.jar&lt;android.app(Fragment.class[Fragment" modifiers="33" timestamp="1373463338000"/>
 <typeInfo handle="=MIDIeval/C:\/Users\/Iseberg\/Downloads\/adt-bundle-windows-x86_64-20130729\/adt-bundle-windows-x86_64-20130729\/sdk\/platforms\/android-18\/android.jar&lt;android.widget(FrameLayout.class[FrameLayout" modifiers="33" timestamp="1373463338000"/>

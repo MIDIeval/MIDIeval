@@ -12,7 +12,7 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 import org.openintents.sensorsimulator.hardware.SensorManagerSimulator;
 
-import android.R;
+import com.example.dimension.R;
 import android.app.Activity;
 import android.graphics.Color;
 import android.hardware.Sensor;

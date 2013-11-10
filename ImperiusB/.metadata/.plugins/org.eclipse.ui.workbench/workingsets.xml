@@ -98,5 +98,8 @@
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1383372744233_95" label="Window Working Set" name="Aggregate for window 1383372744233"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1383481564178_96" label="Window Working Set" name="Aggregate for window 1383481564178"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1383483626704_97" label="Window Working Set" name="Aggregate for window 1383483626704"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1384018107402_98" label="Window Working Set" name="Aggregate for window 1384018107402"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1384082214144_99" label="Window Working Set" name="Aggregate for window 1384082214144"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1384082692813_100" label="Window Working Set" name="Aggregate for window 1384082692813"/>
 <mruList name="Sensorlib"/>
 </workingSetManager>
